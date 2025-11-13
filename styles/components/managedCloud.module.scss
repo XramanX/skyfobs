@@ -1,0 +1,429 @@
+:root {
+    --max-width: 1200px;
+    --accent: var(--primary, #4f46e5);
+    --muted: #6b7280;
+    --card-radius: 12px;
+    --page-gutter: 1rem;
+}
+
+/* container helper (kept) */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 calc(var(--page-gutter));
+}
+
+/* HERO */
+.hero {
+    padding: clamp(2rem, 6vw, 4rem) 0;
+    background: linear-gradient(180deg, #fff, #fbfdff);
+}
+
+.heroInner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: clamp(1rem, 3vw, 2.2rem);
+    align-items: center;
+}
+
+/* stack hero on small screens */
+@media (max-width: 880px) {
+    .heroInner {
+        grid-template-columns: 1fr;
+    }
+
+    .heroVisual {
+        order: -1;
+        margin-bottom: 1rem;
+    }
+
+    /* visual above text on very narrow screens */
+}
+
+/* hero text */
+.heroText .kicker {
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: .5rem;
+}
+
+.title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin: .1rem 0 .6rem;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #071024;
+}
+
+.lead {
+    color: var(--muted);
+    max-width: 70ch;
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+/* hero visual */
+.heroVisual {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroVisual img,
+.heroVisual svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* CTA row */
+.ctaRow {
+    display: flex;
+    gap: .85rem;
+    margin-top: .9rem;
+}
+
+@media (max-width:520px) {
+    .ctaRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ctaRow .button {
+        width: 100%;
+    }
+}
+
+/* TABS SECTION */
+.tabsSection {
+    padding: clamp(1rem, 3vw, 2rem) 0 3.2rem;
+    background: #fff;
+}
+
+/* tab bar: becomes scrollable on small screens */
+.tabBar {
+    display: flex;
+    gap: .75rem;
+    background: rgba(10, 20, 30, 0.03);
+    padding: 10px;
+    border-radius: 12px;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    margin-bottom: 12px;
+}
+
+/* each tab pill */
+.tabBtn {
+    scroll-snap-align: center;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-weight: 700;
+    color: #111;
+    white-space: nowrap;
+    transition: transform .16s ease, color .16s ease;
+    min-height: 44px;
+    /* touch target */
+    line-height: 1;
+    font-size: .95rem;
+}
+
+.tabBtn:focus {
+    outline: 3px solid rgba(37, 99, 235, 0.12);
+    outline-offset: 3px;
+}
+
+.tabBtn:hover {
+    transform: translateY(-3px);
+    color: var(--accent);
+}
+
+/* active pill */
+.tabBtn.active {
+    background: linear-gradient(90deg, var(--accent), #4338ca);
+    color: #fff;
+    box-shadow: 0 12px 28px rgba(79, 70, 229, 0.12);
+}
+
+/* icon states */
+.tabIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    font-size: 1.05rem;
+    transition: color .18s ease, transform .18s ease;
+}
+
+.iconInactive {
+    color: #0b1220;
+}
+
+.iconActive {
+    color: #fff;
+}
+
+/* animated indicator (keeps simple) */
+.indicatorWrap {
+    position: relative;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.indicator {
+    width: 20%;
+    height: 8px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(79, 70, 229, .5), rgba(67, 56, 202, .6));
+    transition: transform .28s cubic-bezier(.2, .9, .2, 1);
+    transform-origin: left center;
+}
+
+/* PANEL AREA */
+.panelWrap {
+    margin-top: 1.25rem;
+    padding: .2rem 0;
+}
+
+.panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .32s ease, transform .32s cubic-bezier(.2, .9, .2, 1);
+    will-change: opacity, transform;
+    padding: .6rem 0;
+}
+
+.panel.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* PANEL HEADER */
+.panelHeader {
+    max-width: 68ch;
+    margin-bottom: 1rem;
+    padding-right: .2rem;
+}
+
+.eyebrow {
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: .12em;
+    font-size: .85rem;
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+}
+
+.panelTitle {
+    font-size: clamp(1.25rem, 3.2vw, 1.9rem);
+    margin: 0 0 .5rem 0;
+    line-height: 1.08;
+    font-weight: 800;
+    color: #071024;
+}
+
+.panelLead {
+    color: var(--muted);
+    margin: 0 0 .8rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* BULLETS: stack on small screens */
+.bullets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.bullets li {
+    background: rgba(10, 20, 40, 0.03);
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #223;
+    font-weight: 700;
+    font-size: .96rem;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+}
+
+/* CARDS: responsive columns */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.05rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: var(--card-radius);
+    padding: 1.05rem;
+    border: 1px solid rgba(12, 20, 30, 0.04);
+    box-shadow: 0 8px 26px rgba(12, 20, 30, 0.03);
+    transition: transform .18s cubic-bezier(.2, .9, .2, 1), box-shadow .18s ease, border-color .18s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(12, 20, 30, 0.06);
+    border-color: rgba(79, 70, 229, 0.06);
+}
+
+.card h3 {
+    margin: 0 0 .55rem 0;
+    font-size: 1.03rem;
+    color: #071024;
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: .95rem;
+}
+
+/* small screens: stack everything, bigger touch targets */
+@media (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .bullets {
+        grid-template-columns: repeat(2, 1fr);
+        gap: .7rem;
+    }
+
+    .panelHeader {
+        max-width: 64ch;
+    }
+
+    .indicator {
+        width: 33.3333%;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero {
+        padding: clamp(1.25rem, 4vw, 2.4rem) 0;
+    }
+
+    .title {
+        font-size: clamp(1.3rem, 5vw, 1.6rem);
+    }
+
+    .lead {
+        max-width: 100%;
+    }
+
+    .tabBar {
+        padding: 8px 6px;
+        gap: .6rem;
+    }
+
+    .tabBtn {
+        padding: 10px 12px;
+        font-size: .95rem;
+        min-height: 48px;
+    }
+
+    .tabIcon {
+        flex: 0 0 18px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .panelHeader {
+        padding-right: 0;
+        max-width: 100%;
+        margin-bottom: .9rem;
+    }
+
+    .bullets {
+        grid-template-columns: 1fr;
+        gap: .6rem;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: .9rem;
+    }
+
+    .card {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .tabLabel {
+        max-width: 40ch;
+        white-space: normal;
+    }
+
+    .indicator {
+        width: 40%;
+    }
+}
+
+/* tiny phones: slightly bigger touch targets and spacing */
+@media (max-width: 420px) {
+    .tabBtn {
+        padding: 12px 14px;
+        font-size: .95rem;
+        min-height: 52px;
+        gap: .5rem;
+    }
+
+    .ctaRow {
+        gap: .6rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .lead {
+        font-size: .98rem;
+    }
+}
+
+/* accessibility / focus improvements */
+.tabBtn:focus-visible,
+.card:focus-visible,
+.button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.12);
+    outline-offset: 3px;
+}
+
+/* small polish: ensure horizontal scroll shows nicely */
+.tabBar::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tabBar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+}

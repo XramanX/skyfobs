@@ -1,0 +1,69 @@
+/* styles/components/card.module.scss */
+:root {
+    --card-bg: #fbfbff;
+    --card-radius: 12px;
+    --card-pad: 22px;
+    --card-border: rgba(12, 20, 40, 0.04);
+    --card-shadow: 0 10px 30px rgba(12, 20, 40, 0.05);
+}
+
+/* card shell */
+.card {
+    background: white;
+    border-radius: var(--card-radius);
+    padding: var(--card-pad);
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .16s cubic-bezier(.2, .9, .2, 1), box-shadow .16s ease;
+    min-height: 150px;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-6px);
+    box-shadow: var(--card-shadow);
+}
+
+/* content */
+.cardBody {
+    margin-bottom: 12px;
+}
+
+.cardTitle {
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #0b1220;
+}
+
+.cardText {
+    margin: 0;
+    color: #586069;
+    font-size: .95rem;
+    line-height: 1.6;
+}
+
+/* footer link style */
+.cardFooter {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cardLink {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform .12s ease, opacity .12s;
+}
+
+.cardLink:hover {
+    transform: translateX(4px);
+    opacity: 0.95;
+}

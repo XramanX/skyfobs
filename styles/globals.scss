@@ -1,0 +1,141 @@
+@use 'variables'as *;
+@use './mixins'as *;
+
+/* ------------------------------
+   GLOBAL RESET + BASE
+--------------------------------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; // base for rem
+    scroll-behavior: smooth;
+}
+
+html,
+body,
+#__next {
+    height: 100%;
+}
+
+/* ------------------------------
+   FONT & TYPOGRAPHY
+--------------------------------*/
+
+:root {
+    --font-main: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --text-color: #111;
+    --bg-color: #ffffff;
+
+    --max-width: 1280px;
+
+    --line-height: 1.55;
+
+    /* Font sizes (fluid) */
+    --fs-xs: clamp(0.75rem, 1vw, 0.82rem);
+    --fs-sm: clamp(0.85rem, 1vw, 0.95rem);
+    --fs-base: clamp(1rem, 1.1vw, 1.05rem);
+    --fs-lg: clamp(1.15rem, 1.5vw, 1.25rem);
+    --fs-xl: clamp(1.4rem, 2vw, 1.8rem);
+    --fs-xxl: clamp(2rem, 4vw, 3rem);
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --primary-rgb: 79, 70, 229;
+    --primary-soft: rgba(var(--primary-rgb), 0.18);
+    --primary-soft-2: rgba(var(--primary-rgb), 0.32);
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: var(--fs-base);
+    color: var(--text-color);
+    background: var(--bg-color);
+    line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ------------------------------
+   HEADINGS
+--------------------------------*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-main);
+    font-weight: 700;
+    line-height: 1.25;
+    color: #111;
+}
+
+h1 {
+    font-size: var(--fs-xxl);
+}
+
+h2 {
+    font-size: var(--fs-xl);
+}
+
+h3 {
+    font-size: var(--fs-lg);
+}
+
+h4 {
+    font-size: var(--fs-base);
+}
+
+/* ------------------------------
+   LINKS
+--------------------------------*/
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color .18s ease, opacity .18s ease;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+/* ------------------------------
+   CONTAINER
+--------------------------------*/
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ------------------------------
+   UTILITY CLASSES
+--------------------------------*/
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    padding: clamp(3rem, 6vw, 6rem) 0;
+}

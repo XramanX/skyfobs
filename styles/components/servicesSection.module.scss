@@ -1,0 +1,197 @@
+/* styles/components/servicesSection.module.scss */
+:root {
+    --section-pad-min: 2.25rem;
+    --section-pad-max: 4.5rem;
+    --max-width: 1200px;
+    --muted: #586069;
+    --accent: var(--primary, #4f46e5);
+    --gap: 1.4rem;
+}
+
+/* wrapper */
+.section {
+    padding: clamp(var(--section-pad-min), 5vw, var(--section-pad-max)) 0;
+    background: #fff;
+}
+
+/* container */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* header */
+.header {
+    text-align: left;
+    margin-bottom: 1.6rem;
+    max-width: 78ch;
+}
+
+.kicker {
+    font-size: .75rem;
+    color: #6b7280;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+}
+
+.title {
+    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    margin: 0 0 .6rem 0;
+    font-weight: 800;
+    color: #071024;
+}
+
+.lead {
+    margin: 0 0 1.05rem 0;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* controls row */
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.filters {
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+    overflow: visible;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap);
+    margin-top: 1.6rem;
+}
+
+/* responsiveness for grid */
+@media (max-width: 1100px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 820px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------------- Mobile slider ----------------
+   This element is hidden on desktop and shown on small screens
+--------------------------------------------------*/
+.mobileSlider {
+    display: none;
+    margin-top: 1.2rem;
+}
+
+/* track is horizontally scrollable, supports snapping */
+.sliderTrack {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    /* firefox */
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* hide native scrollbar visually (but keep functionality) */
+.sliderTrack::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sliderTrack::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+}
+
+.sliderTrack::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* each slide is snap-aligned and sized so card looks great on mobile */
+.slide {
+    flex: 0 0 calc(88%);
+    /* width of each slide relative to viewport */
+    scroll-snap-align: start;
+    display: flex;
+}
+
+/* small helper so card fills slide nicely */
+.slide> :global(.card) {
+    width: 100%;
+}
+
+@media (max-width: 620px) {
+
+    .grid {
+        display: none;
+    }
+
+    .mobileSlider {
+        display: block;
+    }
+
+    /* filters become horizontal scroll row */
+    .filters {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.6rem;
+        padding-bottom: 8px;
+        padding-top: 6px;
+        padding-left: 2px;
+        /* small left inset */
+        scrollbar-width: none;
+        /* hide on firefox */
+    }
+
+    .filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* hide webkit scrollbar */
+
+    /* ensure tag buttons shrink well on tiny screens */
+    .filters .tagBtn {
+        white-space: nowrap;
+        flex: 0 0 auto;
+    }
+
+    /* sliderTrack padding to center first/last card visually */
+    .sliderTrack {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    /* slide width smaller on very small screens */
+    @media (max-width: 420px) {
+        .slide {
+            flex: 0 0 calc(92%);
+        }
+    }
+}
+
+/* small screens - nice spacing */
+@media (max-width: 520px) {
+    .header {
+        max-width: 100%;
+    }
+
+    .lead {
+        font-size: 0.96rem;
+    }
+}
