@@ -78,7 +78,6 @@
     display: block;
 }
 
-/* CTA row */
 .ctaRow {
     display: flex;
     gap: .85rem;
@@ -96,20 +95,19 @@
     }
 }
 
-/* TABS SECTION */
 .tabsSection {
     padding: clamp(1rem, 3vw, 2rem) 0 3.2rem;
     background: #fff;
 }
 
-/* tab bar: becomes scrollable on small screens */
 .tabBar {
     display: flex;
     gap: .75rem;
     background: rgba(10, 20, 30, 0.03);
     padding: 10px;
-    border-radius: 12px;
     align-items: center;
+    justify-content: space-around;
+    border-radius: 12px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;

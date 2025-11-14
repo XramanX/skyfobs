@@ -31,11 +31,9 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* FORM AREA */}
         <section className={styles.contactSection}>
           <div className="container">
             <div className={styles.grid}>
-              {/* LEFT */}
               <div className={styles.infoBox}>
                 <h2>Contact Details</h2>
                 <p>

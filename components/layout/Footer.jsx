@@ -1,7 +1,6 @@
 // components/layout/Footer.jsx
 import React, { useCallback } from "react";
 import Link from "next/link";
-import { FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import styles from "../../styles/components/footer.module.scss";
 import Image from "next/image";
 
@@ -71,9 +70,7 @@ function FooterInner() {
               <li>
                 <Link href="/partner-program">Partner program</Link>
               </li>
-              <li>
-                <Link href="/careers">Careers</Link>
-              </li>
+
               <li>
                 <Link href="/contact">Contact</Link>
               </li>
@@ -121,33 +118,6 @@ function FooterInner() {
                 Subscribe
               </button>
             </form>
-
-            {/* <div className={styles.social} aria-hidden={false}>
-              <a
-                href="#"
-                aria-label="Twitter"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href="#"
-                aria-label="GitHub"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <FaGithub />
-              </a>
-            </div> */}
           </div>
         </div>
 

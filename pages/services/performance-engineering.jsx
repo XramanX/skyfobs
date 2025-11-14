@@ -36,6 +36,8 @@ export default function Page() {
       ]}
       cards={cards}
       ctaLabel="Get a performance audit"
+      imageSrc={"/performance-engineer.svg"}
+      imageAlt="performance image"
     />
   );
 }

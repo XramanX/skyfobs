@@ -1,0 +1,247 @@
+/* styles/components/policy.module.scss
+   — prettier, modern policy/terms styles (drop-in replacement)
+*/
+
+:root {
+    --accent: var(--primary, #4f46e5);
+    --muted: #6b7280;
+    --lead: #475569;
+    --bg: #ffffff;
+    --card: #fbfdff;
+    --max: 1200px;
+    --radius: 14px;
+}
+
+/* page shell */
+.page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    color: #071024;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+}
+
+/* header / hero */
+.header {
+    padding: clamp(2rem, 6vw, 3.2rem) 0 1.2rem;
+    display: grid;
+    gap: .6rem;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #071024;
+}
+
+.lead {
+    margin: 0;
+    color: var(--muted);
+    max-width: 72ch;
+    font-size: 1.02rem;
+    line-height: 1.6;
+}
+
+/* small TOC / meta row — looks like a compact summary */
+.header .meta {
+    margin-top: .8rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: .95rem;
+}
+
+/* main content container to center and constrain width */
+.container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* section cards */
+.section {
+    margin: 1.15rem 0;
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid rgba(10, 20, 30, 0.04);
+    padding: clamp(.9rem, 2.4vw, 1.2rem);
+    box-shadow: 0 6px 20px rgba(12, 20, 30, 0.03);
+    display: block;
+    transition: transform .16s ease, box-shadow .16s ease;
+    overflow: hidden;
+}
+
+/* slight lift on larger screens for visual depth */
+@media (hover: hover) and (pointer: fine) {
+    .section:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 44px rgba(12, 20, 30, 0.06);
+    }
+}
+
+/* section headings */
+.section h2 {
+    margin: 0 0 .45rem 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #071024;
+}
+
+/* paragraphs / lists */
+.section p,
+.section ul,
+.section ol {
+    margin: 0 0 .8rem 0;
+    color: var(--lead);
+    line-height: 1.65;
+    max-width: 72ch;
+    font-size: .99rem;
+}
+
+.section ul,
+.section ol {
+    padding-left: 1.15rem;
+}
+
+/* accent stripe on each section (left) */
+.section::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent), rgba(79, 70, 229, 0.8));
+    border-radius: 4px;
+    float: left;
+    margin-right: 14px;
+    transform: translateY(0);
+}
+
+/* make the left stripe less intrusive on small screens */
+@media (max-width: 720px) {
+    .section {
+        padding: .85rem;
+    }
+
+    .section::before {
+        width: 4px;
+        margin-right: 10px;
+    }
+}
+
+/* callout / note style */
+.section .disclaimer,
+.section .callout {
+    background: rgba(79, 70, 229, 0.04);
+    border-radius: 10px;
+    padding: .7rem .9rem;
+    color: #26314a;
+    border: 1px solid rgba(79, 70, 229, 0.06);
+    font-size: .95rem;
+}
+
+/* compact list styles */
+.section ul li {
+    margin: .45rem 0;
+}
+
+/* final CTA panel */
+.footerCta {
+    margin: 1.6rem 0 2.2rem;
+    background: linear-gradient(90deg, rgba(79, 70, 229, 0.06), rgba(37, 99, 235, 0.02));
+    border-radius: 12px;
+    padding: clamp(.9rem, 2vw, 1.2rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid rgba(79, 70, 229, 0.06);
+}
+
+.footerCta h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.footerCta p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* CTA buttons fallback (uses existing .button classes if present) */
+.footerCta .btnWrap {
+    display: flex;
+    gap: .6rem;
+}
+
+/* small utility: table-of-contents look */
+.toc {
+    margin: .8rem 0 0;
+    display: inline-flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+}
+
+.toc a {
+    padding: .35rem .6rem;
+    border-radius: 999px;
+    background: rgba(10, 20, 30, 0.03);
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+.toc a:hover {
+    background: rgba(10, 20, 30, 0.05);
+    color: #071024;
+    transform: translateY(-2px);
+}
+
+/* subtle page-level spacing for readability */
+.page>.container> :not(.header) {
+    margin-top: 0.6rem;
+}
+
+/* reduce visual noise on very narrow screens */
+@media (max-width: 720px) {
+    .header {
+        padding-top: 1.2rem;
+    }
+
+    .section {
+        padding: .75rem;
+        border-radius: 10px;
+    }
+
+    .footerCta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .6rem;
+    }
+
+    .toc a {
+        font-size: .86rem;
+        padding: .3rem .55rem;
+    }
+}
+
+/* accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .section,
+    .section::before,
+    .footerCta {
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .section:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}

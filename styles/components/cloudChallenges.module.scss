@@ -8,8 +8,7 @@
 
  .section {
      position: relative;
-     background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
-     //  padding: clamp(2.25rem, 5vw, 4.5rem) 0;
+     background: var(--primary);
      overflow: hidden;
      min-height: 46vh;
      display: flex;
@@ -29,12 +28,15 @@
  /* LEFT */
  .left {
      max-width: 46ch;
+
  }
 
  /* ensure kicker and title don't add extra margin */
  .kicker {
      font-size: 0.75rem;
-     color: var(--muted);
+     //  color: var(--muted);
+     color: white;
+
      font-weight: 700;
      letter-spacing: 0.12em;
      margin: 0 0 0.75rem 0;
@@ -42,12 +44,12 @@
      text-transform: uppercase;
  }
 
- /* important: reset heading margin so spacing equals hero */
  .title {
      margin: 0 0 1rem 0;
-     /* explicitly set top to 0 */
+     color: white;
+
      font-size: clamp(1.6rem, 3.6vw, 2.4rem);
-     color: var(--heading-color);
+     //  color: var(--heading-color);
      line-height: 1.06;
      font-weight: 800;
  }
@@ -58,7 +60,8 @@
  }
 
  .paragraph {
-     color: var(--muted);
+     color: white;
+
      font-size: clamp(0.95rem, 1.1vw, 1.02rem);
      line-height: 1.7;
      margin: 0 0 1.25rem 0;

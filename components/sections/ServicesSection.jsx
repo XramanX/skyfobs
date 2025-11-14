@@ -4,6 +4,7 @@ import ServiceCard from "../common/ServiceCard";
 import TagButton from "../ui/TagButton";
 import styles from "../../styles/components/servicesSection.module.scss";
 
+/* ... your ALL_SERVICES and FILTERS unchanged ... */
 const ALL_SERVICES = [
   {
     id: "software",
@@ -37,7 +38,7 @@ const ALL_SERVICES = [
     id: "ai",
     title: "AI & GenAI on Cloud",
     text: "Build and deploy GenAI solutions with secure data pipelines and cost-efficient model hosting.",
-    href: "/services/ai-genai-cloud",
+    href: "/services/ai",
     tags: ["ai"],
   },
   {
@@ -51,7 +52,7 @@ const ALL_SERVICES = [
     id: "migration",
     title: "Cloud Migration & Modernization",
     text: "Lift-and-shift or refactor — we migrate applications safely and reduce operational friction.",
-    href: "/services/cloud-migration",
+    href: "/services/managed-cloud",
     tags: ["solutions"],
   },
 ];
@@ -77,7 +78,8 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
   return (
     <section className={styles.section} aria-label="Cloud services">
       <div className="container">
-        <div className={styles.header}>
+        {/* Header: reveal as a block (small delay) */}
+        <div className={`${styles.header}`} data-delay={80}>
           <div className={styles.kicker}>SERVICES</div>
           <h2 className={styles.title}>
             Cloud engineering, operations and managed services
@@ -90,19 +92,20 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
           </p>
 
           <div className={styles.controls}>
-            {/* desktop filters (visual), mobile will use scrollable row */}
             <div
               className={styles.filters}
               role="tablist"
               aria-label="Service filters"
             >
-              {FILTERS.map((f) => (
+              {FILTERS.map((f, idx) => (
                 <TagButton
                   key={f.id}
                   role="tab"
                   active={activeFilter === f.id}
                   aria-selected={activeFilter === f.id}
                   onClick={() => onFilterClick(f.id)}
+                  // className="reveal-on-scroll"
+                  data-delay={140 + idx * 40}
                 >
                   {f.label}
                 </TagButton>
@@ -111,26 +114,33 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
           </div>
         </div>
 
-        {/* Desktop grid */}
+        {/* GRID: each card will pop with a stagger */}
         <div className={styles.grid} aria-hidden={false}>
-          {visible.map((s) => (
-            <ServiceCard
+          {visible.map((s, i) => (
+            <div
               key={s.id}
-              title={s.title}
-              text={s.text}
-              href={s.href}
-            />
+              // className="reveal-on-scroll"
+              data-delay={200 + i * 60}
+              /* make sure each grid child is focusable for keyboard users */
+              tabIndex={-1}
+            >
+              <ServiceCard title={s.title} text={s.text} href={s.href} />
+            </div>
           ))}
         </div>
 
-        {/* Mobile slider (visible only on small screens via CSS) */}
+        {/* Mobile slider: reveal as one block (cards inside still render) */}
         <div
           className={styles.mobileSlider}
           role="region"
           aria-label="Services carousel"
         >
-          <div className={styles.sliderTrack} tabIndex={0}>
-            {visible.map((s) => (
+          <div
+            className={`${styles.sliderTrack}`}
+            tabIndex={0}
+            data-delay={320}
+          >
+            {visible.map((s, idx) => (
               <div className={styles.slide} key={s.id}>
                 <ServiceCard title={s.title} text={s.text} href={s.href} />
               </div>

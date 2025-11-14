@@ -32,6 +32,8 @@ export default function Page() {
       bullets={["Threat modelling", "Automated detection", "Policy-as-code"]}
       cards={cards}
       ctaLabel="Request a security review"
+      imageSrc={"/security.svg"}
+      imageAlt="security image"
     />
   );
 }

@@ -32,6 +32,8 @@ export default function Page() {
       bullets={["MLOps & pipelines", "RAG & retrieval", "Safety & governance"]}
       cards={cards}
       ctaLabel="Talk AI"
+      imageSrc={"/ai.svg"}
+      imageAlt="ai image"
     />
   );
 }

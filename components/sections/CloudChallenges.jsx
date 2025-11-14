@@ -1,4 +1,3 @@
-// components/sections/CloudChallenges.jsx
 import React from "react";
 import Image from "next/image";
 import styles from "../../styles/components/cloudChallenges.module.scss";
@@ -11,11 +10,13 @@ export default function CloudChallenges({
     "A modern cloud foundation brings automation, stability and speed so teams can innovate without friction.",
   ],
   illustration = "/cloud-challenges.png",
+  delay = 80, // ms
 }) {
   return (
     <section
-      className={styles.section}
+      className={`${styles.section}`}
       aria-labelledby="cloud-challenges-title"
+      data-delay={delay}
     >
       <div className="container">
         <div className={styles.grid}>

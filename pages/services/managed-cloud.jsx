@@ -19,6 +19,7 @@ import Link from "next/link";
 import TagButton from "../../components/ui/TagButton";
 import ServiceCard from "../../components/common/ServiceCard";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 const TABS = [
   {
@@ -259,10 +260,7 @@ export default function ManagedCloudPage() {
 
                 <div className={styles.ctaRow}>
                   <Link href="/contact" className="button primary">
-                    Contact us
-                  </Link>
-                  <Link href="/services/cloud-audit" className="button ghost">
-                    Get a cloud audit
+                    <Button>Contact us</Button>
                   </Link>
                 </div>
               </div>

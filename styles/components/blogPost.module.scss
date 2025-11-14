@@ -1,0 +1,36 @@
+.page {
+    padding: clamp(2rem, 5vw, 3.5rem) 0;
+}
+
+.post {
+    background: transparent;
+}
+
+.header {
+    margin-bottom: 1.25rem;
+
+    .meta {
+        color: #6b7280;
+        font-weight: 600;
+    }
+
+    .title {
+        margin: .6rem 0;
+    }
+
+    .hero {
+        margin: .8rem 0 1.2rem;
+        color: #374151;
+    }
+}
+
+.content {
+    color: #374151;
+    line-height: 1.75;
+    font-size: 1rem;
+    max-width: 70ch;
+}
+
+.footer {
+    margin-top: 1.6rem;
+}

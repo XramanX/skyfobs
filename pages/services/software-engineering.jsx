@@ -37,6 +37,8 @@ export default function Page() {
       cards={cards}
       ctaHref="/contact"
       ctaLabel="Talk to engineering"
+      imageSrc={"/software-engineer.svg"}
+      imageAlt="sde image"
     />
   );
 }

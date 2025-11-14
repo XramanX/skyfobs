@@ -8,7 +8,7 @@ const NAV = [
         href: "/services/performance-engineering",
       },
       { label: "Security", href: "/services/security" },
-      { label: "AI & Gen AI", href: "/services/ai-gen-ai" },
+      { label: "AI & Gen AI", href: "/services/ai" },
       { label: "DevOps", href: "/services/devops" },
       { label: "Managed Cloud Solutions", href: "/services/managed-cloud" },
     ],
@@ -16,7 +16,6 @@ const NAV = [
   { label: "Partner Program", href: "/partner-program" },
   { label: "About us", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default NAV;

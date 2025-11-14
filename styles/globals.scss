@@ -139,3 +139,63 @@ a {
 .section {
     padding: clamp(3rem, 6vw, 6rem) 0;
 }
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(22px);
+    /* start slightly lower */
+    transition:
+        opacity 0.65s ease-out,
+        transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    &.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.reveal-on-scroll[data-delay] {
+    transition-delay: calc(attr(data-delay ms) * 1ms);
+}
+
+/* small variation: subtle scale-in for bigger elements */
+.reveal-on-scroll.pop {
+    transform: translateY(22px) scale(0.985);
+}
+
+.reveal-on-scroll.pop.in-view {
+    transform: translateY(0) scale(1);
+}
+
+/* optional left/right directional reveals — add class 'from-left' or 'from-right' */
+.reveal-on-scroll.from-left {
+    transform: translateX(-18px) translateY(8px) scale(0.995);
+}
+
+.reveal-on-scroll.from-left.in-view {
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+.reveal-on-scroll.from-right {
+    transform: translateX(18px) translateY(8px) scale(0.995);
+}
+
+.reveal-on-scroll.from-right.in-view {
+    transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Respect user reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    .reveal-on-scroll,
+    .reveal-on-scroll.in-view {
+        transform: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+    }
+}

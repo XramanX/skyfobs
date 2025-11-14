@@ -1,9 +1,17 @@
-import React from "react";
+// pages/about.jsx
+import React, { useMemo } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { FaGlobe, FaRocket, FaHandsHelping, FaClock } from "react-icons/fa";
+import {
+  FaGlobe,
+  FaRocket,
+  FaHandsHelping,
+  FaClock,
+  FaEnvelope,
+} from "react-icons/fa";
 import styles from "../styles/components/about.module.scss";
+import Timeline from "@/components/sections/Timeline";
 
 const TEAM = [
   {
@@ -26,14 +34,62 @@ const TEAM = [
   },
 ];
 
+function Stat({ value, label }) {
+  return (
+    <div className={styles.stat}>
+      <div className={styles.statValue}>{value}</div>
+      <div className={styles.statLabel}>{label}</div>
+    </div>
+  );
+}
+
+function ValueCard({ icon: Icon, title, children }) {
+  return (
+    <div className={styles.value}>
+      <div className={styles.valueIcon} aria-hidden>
+        <Icon />
+      </div>
+      <div>
+        <h4>{title}</h4>
+        <p>{children}</p>
+      </div>
+    </div>
+  );
+}
+
+function TeamMember({ person }) {
+  return (
+    <article className={styles.member} tabIndex={0}>
+      {/* <div className={styles.avatarWrap}>
+        <Image
+          src={person.img}
+          alt={`Photo of ${person.name}`}
+          width={110}
+          height={110}
+          className={styles.avatar}
+          priority={false}
+        />
+      </div> */}
+
+      <div className={styles.meta}>
+        <h3>{person.name}</h3>
+        <p className={styles.role}>{person.title}</p>
+        <p className={styles.bio}>{person.bio}</p>
+      </div>
+    </article>
+  );
+}
+
 export default function AboutPage() {
+  const team = useMemo(() => TEAM, []);
+
   return (
     <>
       <Head>
         <title>About — Skyfobs</title>
         <meta
           name="description"
-          content="Skyfobs is a technology partner specialising in software engineering and managed cloud solutions. Learn about our mission, values and team."
+          content="Skyfobs: software engineering and managed cloud solutions. Mission, values and team."
         />
       </Head>
 
@@ -60,6 +116,16 @@ export default function AboutPage() {
                     Our services
                   </Link>
                 </div>
+
+                <div className={styles.heroMeta}>
+                  <div className={styles.heroMetaItem}>
+                    <FaEnvelope aria-hidden />
+                    <div>
+                      <small>Contact</small>
+                      <div className={styles.metaValue}>hello@skyfobs.com</div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className={styles.heroVisual} aria-hidden>
@@ -73,19 +139,17 @@ export default function AboutPage() {
                     height: "auto",
                     objectFit: "contain",
                   }}
-                  priority={false}
                 />
               </div>
             </div>
           </div>
         </header>
 
-        {/* MISSION */}
-        <section className={styles.mission}>
+        <section className={styles.mission} aria-labelledby="mission-title">
           <div className="container">
             <div className={styles.missionGrid}>
               <div className={styles.missionText}>
-                <h2>Our mission</h2>
+                <h2 id="mission-title">Our mission</h2>
                 <p>
                   To enable businesses to deliver secure, scalable software and
                   cloud platforms that unlock measurable value — faster
@@ -100,74 +164,34 @@ export default function AboutPage() {
               </div>
 
               <div className={styles.values}>
-                <div className={styles.value}>
-                  <div className={styles.icon}>
-                    <FaRocket />
-                  </div>
-                  <div>
-                    <h3>Velocity</h3>
-                    <p>
-                      Small cross-functional teams that deliver end-to-end
-                      outcomes.
-                    </p>
-                  </div>
-                </div>
+                <ValueCard icon={FaRocket} title="Velocity">
+                  Small cross-functional teams that deliver end-to-end outcomes.
+                </ValueCard>
 
-                <div className={styles.value}>
-                  <div className={styles.icon}>
-                    <FaGlobe />
-                  </div>
-                  <div>
-                    <h3>Reliability</h3>
-                    <p>
-                      Design for failure, observability-first and proven
-                      runbooks.
-                    </p>
-                  </div>
-                </div>
+                <ValueCard icon={FaGlobe} title="Reliability">
+                  Design for failure, observability-first and proven runbooks.
+                </ValueCard>
 
-                <div className={styles.value}>
-                  <div className={styles.icon}>
-                    <FaHandsHelping />
-                  </div>
-                  <div>
-                    <h3>Collaboration</h3>
-                    <p>
-                      We partner closely with product and operations to solve
-                      real problems.
-                    </p>
-                  </div>
-                </div>
+                <ValueCard icon={FaHandsHelping} title="Collaboration">
+                  We partner closely with product and operations to solve real
+                  problems.
+                </ValueCard>
               </div>
             </div>
           </div>
         </section>
 
-        {/* TIMELINE / STATS */}
-        <section className={styles.stats}>
+        <section className={styles.stats} aria-label="Company stats">
           <div className="container">
-            <ul className={styles.statsList}>
-              <li>
-                <strong>20+</strong>
-                <span>years combined experience</span>
-              </li>
-              <li>
-                <strong>100+</strong>
-                <span>platforms & apps shipped</span>
-              </li>
-              <li>
-                <strong>24/7</strong>
-                <span>managed ops & support</span>
-              </li>
-              <li>
-                <strong>99.99%</strong>
-                <span>average platform uptime</span>
-              </li>
-            </ul>
+            <div className={styles.statsList}>
+              <Stat value="20+" label="years combined experience" />
+              <Stat value="100+" label="platforms & apps shipped" />
+              <Stat value="24/7" label="managed ops & support" />
+              <Stat value="99.99%" label="avg platform uptime" />
+            </div>
           </div>
         </section>
 
-        {/* TEAM */}
         <section className={styles.teamSection}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Leadership & Engineers</h2>
@@ -177,76 +201,17 @@ export default function AboutPage() {
             </p>
 
             <div className={styles.teamGrid}>
-              {TEAM.map((m) => (
-                <article key={m.name} className={styles.member}>
-                  <div className={styles.avatar}>
-                    <Image
-                      src={m.img}
-                      alt={m.name}
-                      width={200}
-                      height={200}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-
-                  <div className={styles.meta}>
-                    <h3>{m.name}</h3>
-                    <p className={styles.role}>{m.title}</p>
-                    <p className={styles.bio}>{m.bio}</p>
-                  </div>
-                </article>
+              {team.map((m) => (
+                <TeamMember key={m.name} person={m} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* TIMELINE */}
-        <section className={styles.timelineSection}>
-          <div className="container">
-            <h2 className={styles.sectionTitle}>Our story</h2>
-
-            <ol className={styles.timeline}>
-              <li>
-                <div className={styles.year}>2018</div>
-                <div className={styles.event}>
-                  <h4>Founded</h4>
-                  <p>
-                    Started as a small consulting team solving integration
-                    challenges for banks.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className={styles.year}>2020</div>
-                <div className={styles.event}>
-                  <h4>Cloud-first shift</h4>
-                  <p>
-                    Built managed cloud offerings and automated platform tooling
-                    for customers.
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div className={styles.year}>2023</div>
-                <div className={styles.event}>
-                  <h4>Product & services</h4>
-                  <p>
-                    Launched service packages for migration, observability and
-                    security.
-                  </p>
-                </div>
-              </li>
-            </ol>
-          </div>
+        <section className={styles.timelineSection} aria-labelledby="story">
+          <Timeline />
         </section>
 
-        {/* CTA */}
         <section className={styles.footerCta}>
           <div className="container">
             <div className={styles.ctaInner}>

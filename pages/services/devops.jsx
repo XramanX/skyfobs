@@ -32,6 +32,8 @@ export default function Page() {
       bullets={["IaC & automation", "Fast CI/CD", "On-call & SRE"]}
       cards={cards}
       ctaLabel="Improve platform reliability"
+      imageSrc={"/devOps.svg"}
+      imageAlt="devops image"
     />
   );
 }

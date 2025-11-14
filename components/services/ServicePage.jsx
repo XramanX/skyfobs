@@ -1,6 +1,8 @@
+// pages/service-page.jsx  (or wherever ServicePage lives)
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 import ServiceCard from "../common/ServiceCard";
 import styles from "../../styles/components/managedCloud.module.scss";
 
@@ -13,6 +15,8 @@ export default function ServicePage({
   cards = [],
   ctaHref = "/contact",
   ctaLabel = "Contact us",
+  imageSrc = null,
+  imageAlt = "",
 }) {
   return (
     <>
@@ -40,25 +44,43 @@ export default function ServicePage({
                 </div>
               </div>
 
-              <div className={styles.heroVisual} aria-hidden>
-                <svg
-                  width="420"
-                  height="220"
-                  viewBox="0 0 420 220"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  role="img"
-                  aria-hidden
-                >
-                  <rect
-                    x="0"
-                    y="0"
+              <div
+                className={styles.heroVisual}
+                aria-hidden={imageAlt ? "false" : "true"}
+              >
+                {imageSrc ? (
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt || title}
+                    width={520}
+                    height={320}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "contain",
+                    }}
+                    priority={false}
+                  />
+                ) : (
+                  <svg
                     width="420"
                     height="220"
-                    rx="12"
-                    fill="#f8fbff"
-                  />
-                </svg>
+                    viewBox="0 0 420 220"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="0"
+                      y="0"
+                      width="420"
+                      height="220"
+                      rx="12"
+                      fill="#f8fbff"
+                    />
+                  </svg>
+                )}
               </div>
             </div>
           </div>

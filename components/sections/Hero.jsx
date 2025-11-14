@@ -1,91 +1,118 @@
+// components/sections/Hero.jsx
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { FaPause, FaPlay, FaCloud } from "react-icons/fa";
-import { FaAws } from "react-icons/fa";
-import { SiDigitalocean, SiVmware, SiIcloud, SiOracle } from "react-icons/si";
+import Link from "next/link";
+import { FaPause, FaPlay, FaCloud, FaAws, FaNodeJs } from "react-icons/fa";
+import {
+  SiDigitalocean,
+  SiVmware,
+  SiIcloud,
+  SiOracle,
+  SiGooglecloud,
+  SiCloudflare,
+  SiMongodb,
+} from "react-icons/si";
+import { AiOutlineKubernetes } from "react-icons/ai";
+
 import styles from "../../styles/components/hero.module.scss";
 import Button from "../ui/Button";
 
 export default function Hero({
   title = "Your Trusted Technology Partner",
   subtitle = "Leading provider of software development and managed cloud services",
-  speed = 30,
+  speed = 60,
 }) {
   const [paused, setPaused] = useState(false);
-  const containerRef = useRef(null);
-  const contentRef = useRef(null);
+  const colRef = useRef(null);
   const rafRef = useRef(null);
+  const lastRef = useRef(null);
+  const heightRef = useRef(1);
   const offsetRef = useRef(0);
-  const [offset, setOffset] = useState(0);
 
-  const logos = [
-    FaAws,
-    SiDigitalocean,
-    SiVmware,
-    SiIcloud,
-    SiOracle,
-    FaAws,
-    SiDigitalocean,
-    SiVmware,
-    SiIcloud,
-    SiOracle,
-    FaAws,
-    SiDigitalocean,
-    SiVmware,
-    SiIcloud,
-    SiOracle,
-  ];
+  const icons = useMemo(
+    () => [
+      FaAws,
+      SiGooglecloud,
+      SiDigitalocean,
+      SiVmware,
+      SiIcloud,
+      SiOracle,
+      SiCloudflare,
+      FaNodeJs,
+      SiMongodb,
+      AiOutlineKubernetes,
+    ],
+    []
+  );
 
-  const logosDup = useMemo(() => [...logos, ...logos], [logos]);
+  const items = useMemo(() => [...icons, ...icons, ...icons], [icons]);
 
-  const measure = () => {
-    if (!contentRef.current) return 0;
-    const total = contentRef.current.scrollHeight;
-    return total / 2;
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const measure = (el) => {
+    if (!el) return 0;
+    return Math.max(1, el.scrollHeight / 2);
   };
 
   useEffect(() => {
-    let originalHeight = measure();
-    let lastTime = null;
+    const update = () => {
+      heightRef.current = measure(colRef.current);
+      offsetRef.current = offsetRef.current % heightRef.current;
+      if (colRef.current) {
+        colRef.current.style.transform = `translateY(-${offsetRef.current}px)`;
+      }
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    lastRef.current = null;
 
     const step = (time) => {
       if (paused) {
-        lastTime = time;
+        lastRef.current = time;
         rafRef.current = requestAnimationFrame(step);
         return;
       }
-      if (lastTime == null) lastTime = time;
-      const dt = (time - lastTime) / 1000;
-      lastTime = time;
+
+      if (!lastRef.current) lastRef.current = time;
+      const dt = (time - lastRef.current) / 1000;
+      lastRef.current = time;
 
       offsetRef.current =
-        (offsetRef.current + dt * speed) % (originalHeight || 1);
-      setOffset(offsetRef.current);
+        (offsetRef.current + dt * speed) % (heightRef.current || 1);
+
+      if (colRef.current) {
+        colRef.current.style.transform = `translateY(-${offsetRef.current}px)`;
+      }
 
       rafRef.current = requestAnimationFrame(step);
     };
 
     rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [paused, speed, prefersReducedMotion]);
 
-    const onResize = () => {
-      originalHeight = measure();
-    };
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [paused, speed]);
-
-  const marqueeStyle = {
-    transform: `translateY(-${offset}px)`,
+  const togglePaused = () => {
+    if (prefersReducedMotion) return;
+    setPaused((p) => !p);
   };
 
   return (
     <section className={styles.hero} aria-label="Hero - cloud services">
       <div className="container">
         <div className={styles.inner}>
-          {/* LEFT */}
           <div className={styles.left}>
             <div className={styles.kicker}>
               <FaCloud className={styles.kickerIcon} />
@@ -97,15 +124,9 @@ export default function Hero({
             <p className={styles.subtitle}>{subtitle}</p>
 
             <div className={styles.ctaRow}>
-              <Button onClick={() => (window.location.href = "/contact")}>
-                Contact us
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() => (window.location.href = "/cloud-audit")}
-              >
-                Get a cloud audit
-              </Button>
+              <Link href="/contact" passHref>
+                <Button as="a">Contact us</Button>
+              </Link>
             </div>
 
             <p className={styles.trustText}>
@@ -113,19 +134,19 @@ export default function Hero({
             </p>
           </div>
 
-          {/* RIGHT – Cloud Provider Icons */}
-          <aside className={styles.right}>
-            <div className={styles.logosCard} ref={containerRef}>
-              <div
-                className={styles.marqueeJS}
-                ref={contentRef}
-                style={marqueeStyle}
-              >
-                {logosDup.map((Icon, i) => (
-                  <div className={styles.logoWrap} key={i}>
-                    <Icon size={48} className={styles.cloudIcon} />
-                  </div>
-                ))}
+          <aside className={styles.right} aria-hidden={false}>
+            <div className={styles.logosCard}>
+              <div className={styles.marqueeViewportVertical}>
+                <div ref={colRef} className={styles.marqueeColumn} aria-hidden>
+                  {items.map((Icon, i) => {
+                    const C = Icon;
+                    return (
+                      <div key={`v-${i}`} className={styles.logoWrap}>
+                        <C size={48} className={`cloudIcon ${C.name}`} />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
@@ -133,7 +154,14 @@ export default function Hero({
               type="button"
               className={styles.pauseBtn}
               aria-pressed={paused}
-              onClick={() => setPaused((p) => !p)}
+              aria-label={
+                prefersReducedMotion
+                  ? "Animation disabled by system preference"
+                  : paused
+                  ? "Play logo animation"
+                  : "Pause logo animation"
+              }
+              onClick={togglePaused}
             >
               {paused ? <FaPlay size={14} /> : <FaPause size={14} />}
             </button>

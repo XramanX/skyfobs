@@ -1,0 +1,241 @@
+:root {
+    --timeline-line: rgba(10, 20, 30, 0.06);
+    --accent: var(--primary, #4f46e5);
+    --muted: #6b7280;
+    --card-bg: #fff;
+    --radius: 12px;
+}
+
+/* Section shell */
+.timelineSection {
+    padding: 2rem 0;
+    background: transparent;
+}
+
+.sectionTitle {
+    margin: 0 0 1rem 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #071024;
+}
+
+/* Outer container that keeps timeline centered */
+.timelineWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* timeline list */
+.timeline {
+    position: relative;
+    list-style: none;
+    margin: 1rem 0 0 0;
+    padding: 0;
+}
+
+/* center vertical line (desktop) */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--timeline-line);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* each item: we will alternate left/right on wide screens */
+.item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.4rem 0;
+    position: relative;
+}
+
+/* marker column (year + dot) */
+.marker {
+    width: 140px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* the colored dot on the centerline */
+.dot {
+    width: 12px;
+    height: 12px;
+    background: var(--card-bg);
+    border: 3px solid var(--timeline-line);
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(12, 20, 30, 0.04);
+}
+
+/* year badge */
+.year {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+/* the content card */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1rem;
+    border: 1px solid rgba(12, 20, 30, 0.04);
+    box-shadow: 0 8px 24px rgba(12, 20, 30, 0.04);
+    max-width: 560px;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    outline: none;
+}
+
+.card:focus,
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 44px rgba(12, 20, 30, 0.06);
+}
+
+/* titles and text */
+.eventTitle {
+    margin: 0 0 0.35rem 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #071024;
+}
+
+.eventText {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.97rem;
+}
+
+/* LEFT / RIGHT layout for wide screens */
+.left {
+    justify-content: flex-end;
+    text-align: right;
+
+    /* place marker on the left of centerline */
+    .marker {
+        order: 1;
+        align-items: center;
+    }
+
+    /* place card to the left of the center line */
+    .card {
+        order: 0;
+        margin-right: 1.4rem;
+    }
+}
+
+.right {
+    justify-content: flex-start;
+    text-align: left;
+
+    .marker {
+        order: 0;
+    }
+
+    .card {
+        order: 1;
+        margin-left: 1.4rem;
+    }
+}
+
+/* On small screens we stack items and hide center line */
+@media (max-width: 880px) {
+    .timeline::before {
+        left: 12px;
+        transform: none;
+        width: 2px;
+    }
+
+    .item {
+        padding-left: 28px;
+        gap: 0.8rem;
+    }
+
+    .marker {
+        width: 48px;
+        min-width: 48px;
+        align-items: flex-start;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+
+    .dot {
+        margin-left: -6px;
+    }
+
+    /* make both sides identical (stacked) */
+    .left,
+    .right {
+        text-align: left;
+        justify-content: flex-start;
+
+        .card {
+            margin: 0;
+        }
+
+        .marker {
+            order: 0;
+        }
+    }
+}
+
+/* small polish: subtle entrance fade-up (respects reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+    .item {
+        opacity: 0;
+        transform: translateY(10px);
+        animation: tt-fade 520ms ease forwards;
+    }
+
+    .item:nth-child(1) {
+        animation-delay: 80ms;
+    }
+
+    .item:nth-child(2) {
+        animation-delay: 160ms;
+    }
+
+    .item:nth-child(3) {
+        animation-delay: 240ms;
+    }
+
+    @keyframes tt-fade {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* accessibility: focus ring */
+.card:focus {
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.10);
+}
+
+/* compact spacing for ultra-small view */
+@media (max-width: 420px) {
+    .card {
+        padding: 0.85rem;
+    }
+
+    .marker {
+        font-size: 0.82rem;
+    }
+
+    .eventTitle {
+        font-size: 1rem;
+    }
+}

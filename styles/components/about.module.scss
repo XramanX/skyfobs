@@ -1,5 +1,3 @@
-/* styles/components/about.module.scss */
-
 :root {
     --max-width: 1200px;
     --accent: var(--primary, #4f46e5);
@@ -7,23 +5,25 @@
     --surface: #ffffff;
     --glass: rgba(10, 20, 30, 0.03);
     --radius: 12px;
+    --easing: cubic-bezier(.2, .9, .2, 1);
 }
 
-/* page shell */
+/* Page shell */
 .page {
-    background: #fff;
+    background: var(--surface);
     color: #071024;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* HERO */
 .hero {
-    padding: clamp(2rem, 6vw, 4rem) 0;
+    padding: clamp(2rem, 5vw, 4rem) 0;
     background: linear-gradient(180deg, #fff, #fbfdff);
 }
 
 .heroInner {
     display: grid;
-    grid-template-columns: 1fr 480px;
+    grid-template-columns: 1fr 460px;
     gap: clamp(1rem, 3vw, 2.4rem);
     align-items: center;
 }
@@ -36,19 +36,18 @@
 }
 
 .title {
-    margin: 0 0 .6rem 0;
-    font-size: clamp(1.6rem, 4.2vw, 2.6rem);
+    margin: 0 0 .5rem 0;
+    font-size: clamp(1.6rem, 3.6vw, 2.6rem);
     font-weight: 800;
     line-height: 1.02;
-    color: #071024;
 }
 
 .lead {
-    max-width: 64ch;
     color: var(--muted);
+    max-width: 64ch;
+    margin-bottom: .8rem;
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1rem;
 }
 
 .heroCtas {
@@ -57,34 +56,41 @@
     margin-top: .6rem;
 }
 
-.heroVisual {
+.heroMeta {
+    margin-top: 1rem;
     display: flex;
+    gap: 1rem;
     align-items: center;
-    justify-content: center;
 }
 
-/* mission / values */
+.heroMetaItem {
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+    color: var(--muted);
+}
+
+.metaValue {
+    font-weight: 700;
+    color: #071024;
+}
+
+/* MISSION / VALUES */
 .mission {
     padding: 2rem 0;
-    background: #fff;
+    background: var(--surface);
 }
 
 .missionGrid {
     display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 2rem;
+    grid-template-columns: 1fr 340px;
+    gap: 1.6rem;
     align-items: start;
 }
 
 .missionText h2 {
     margin: 0 0 .6rem 0;
-    font-size: 1.4rem;
-}
-
-.missionText p {
-    color: var(--muted);
-    line-height: 1.6;
-    margin: 0 0 .6rem;
+    font-size: 1.25rem;
 }
 
 .missionNote {
@@ -94,8 +100,7 @@
 }
 
 .values {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 1rem;
 }
 
@@ -106,75 +111,79 @@
     background: var(--glass);
     padding: .9rem;
     border-radius: 10px;
+    transition: transform .16s var(--easing);
 }
 
-.value .icon {
-    width: 44px;
-    height: 44px;
+.value:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(12, 20, 30, 0.04);
+}
+
+.valueIcon {
+    width: 48px;
+    height: 48px;
     border-radius: 10px;
-    background: linear-gradient(180deg, rgba(79, 70, 229, 0.12), rgba(79, 70, 229, 0.06));
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.05rem;
     color: var(--accent);
+    background: linear-gradient(180deg, rgba(79, 70, 229, 0.08), rgba(79, 70, 229, 0.03));
 }
 
-/* stats */
+/* STATS */
 .stats {
     padding: 1.6rem 0 2rem;
 }
 
 .statsList {
-    display: flex;
-    gap: 1.1rem;
-    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
     margin: 0;
     padding: 0;
-    justify-content: space-between;
+    list-style: none;
 }
 
-.statsList li {
-    flex: 1;
-    text-align: center;
+.stat {
     background: #f7fbff;
     padding: 1rem;
     border-radius: 10px;
+    text-align: center;
 }
 
-.statsList strong {
-    display: block;
+.statValue {
     font-size: 1.4rem;
+    font-weight: 800;
     color: #071024;
 }
 
-.statsList span {
+.statLabel {
     color: var(--muted);
     font-size: .95rem;
+    margin-top: .35rem;
 }
 
-/* team */
+/* TEAM */
 .teamSection {
     padding: 2.4rem 0;
-    background: #fff;
+    background: var(--surface);
 }
 
 .sectionTitle {
-    margin: 0 0 .6rem 0;
+    margin: 0 0 .4rem 0;
     font-size: 1.35rem;
     font-weight: 800;
 }
 
 .sectionLead {
-    margin: 0 0 1rem 0;
     color: var(--muted);
+    margin: 0 0 1rem 0;
 }
 
 .teamGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.1rem;
-    margin-top: 1rem;
+    gap: 1rem;
 }
 
 .member {
@@ -186,14 +195,33 @@
     border-radius: 12px;
     border: 1px solid rgba(12, 20, 30, 0.04);
     box-shadow: 0 8px 20px rgba(12, 20, 30, 0.03);
+    transition: transform .16s var(--easing), box-shadow .16s var(--easing);
+    cursor: default;
 }
 
-.avatar {
+.member:focus,
+.member:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(12, 20, 30, 0.06);
+    outline: none;
+}
+
+.avatarWrap {
     width: 110px;
     height: 110px;
     flex: 0 0 110px;
     border-radius: 10px;
     overflow: hidden;
+    background: linear-gradient(180deg, #f6f8ff, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .meta h3 {
@@ -213,7 +241,7 @@
     line-height: 1.6;
 }
 
-/* timeline */
+/* TIMELINE */
 .timelineSection {
     padding: 2rem 0;
 }
@@ -233,7 +261,7 @@
 }
 
 .year {
-    min-width: 68px;
+    min-width: 72px;
     font-weight: 800;
     color: var(--accent);
 }
@@ -245,15 +273,14 @@
 .event p {
     margin: 0;
     color: var(--muted);
-    line-height: 1.6;
 }
 
-/* footer CTA */
+/* CTA strip */
 .footerCta {
     padding: 2rem 0 3rem;
-    background: linear-gradient(180deg, rgba(79, 70, 229, 0.04), rgba(79, 70, 229, 0.02));
+    background: linear-gradient(180deg, rgba(79, 70, 229, 0.03), rgba(79, 70, 229, 0.01));
     border-radius: 12px;
-    margin: 1.6rem 0;
+    margin: 1.4rem 0;
 }
 
 .ctaInner {
@@ -261,12 +288,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 1rem 1rem;
-}
-
-.ctaInner h3 {
-    margin: 0 0 .25rem 0;
-    font-size: 1.1rem;
+    padding: 1rem;
 }
 
 .ctaActions {
@@ -274,19 +296,14 @@
     gap: .8rem;
 }
 
-/* responsive tweaks */
-@media (max-width: 1024px) {
+/* small screens */
+@media (max-width: 1100px) {
     .heroInner {
-        grid-template-columns: 1fr 380px;
+        grid-template-columns: 1fr 360px;
     }
 
     .missionGrid {
         grid-template-columns: 1fr;
-    }
-
-    .values {
-        flex-direction: row;
-        flex-wrap: wrap;
     }
 
     .teamGrid {
@@ -294,8 +311,7 @@
     }
 
     .statsList {
-        flex-direction: column;
-        gap: .75rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .ctaInner {
@@ -323,31 +339,28 @@
         flex-direction: row;
     }
 
-    .avatar {
+    .avatarWrap {
         width: 90px;
         height: 90px;
-    }
-
-    .ctaInner {
-        padding: .6rem 0;
+        flex: 0 0 90px;
     }
 
     .statsList {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: .6rem;
     }
 
-    .values {
-        gap: .6rem;
+    .value {
+        flex-direction: row;
+        gap: .8rem;
+    }
+
+    .missionGrid {
+        grid-template-columns: 1fr;
     }
 }
 
-@media (max-width: 420px) {
-    .hero {
-        padding: 1.2rem 0;
-    }
-
+@media (max-width:420px) {
     .title {
         font-size: 1.2rem;
     }
@@ -356,11 +369,23 @@
         font-size: .98rem;
     }
 
-    .statsList {
-        grid-template-columns: 1fr;
+    .avatarWrap {
+        width: 72px;
+        height: 72px;
     }
 
     .ctaInner {
         gap: .6rem;
+    }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .value,
+    .member {
+        transition: none !important;
+        transform: none !important;
+        box-shadow: none !important;
     }
 }
