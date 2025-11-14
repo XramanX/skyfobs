@@ -78,7 +78,6 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
   return (
     <section className={styles.section} aria-label="Cloud services">
       <div className="container">
-        {/* Header: reveal as a block (small delay) */}
         <div className={`${styles.header}`} data-delay={80}>
           <div className={styles.kicker}>SERVICES</div>
           <h2 className={styles.title}>
@@ -114,17 +113,20 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
           </div>
         </div>
 
-        {/* GRID: each card will pop with a stagger */}
         <div className={styles.grid} aria-hidden={false}>
           {visible.map((s, i) => (
             <div
               key={s.id}
               // className="reveal-on-scroll"
               data-delay={200 + i * 60}
-              /* make sure each grid child is focusable for keyboard users */
               tabIndex={-1}
             >
-              <ServiceCard title={s.title} text={s.text} href={s.href} />
+              <ServiceCard
+                title={s.title}
+                text={s.text}
+                href={s.href}
+                learnMoreBtn={false}
+              />
             </div>
           ))}
         </div>
