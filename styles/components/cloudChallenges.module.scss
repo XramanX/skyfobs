@@ -15,8 +15,7 @@
     background: var(--primary);
     overflow: hidden;
 
-    /* PERFECT responsive padding */
-    padding: clamp(var(--section-padding-min), 5vw, var(--section-padding-max)) var(--section-inline-padding);
+    // padding: clamp(var(--section-padding-min), 5vw, var(--section-padding-max)) var(--section-inline-padding);
 
     min-height: 46vh;
     display: flex;

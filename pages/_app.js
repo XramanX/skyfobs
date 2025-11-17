@@ -1,4 +1,3 @@
-// pages/_app.js
 import "../styles/globals.scss";
 import { Inter } from "next/font/google";
 import Header from "../components/layout/Header";

@@ -1,4 +1,10 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import NavDropdown from "./NavDropdown";
@@ -9,6 +15,9 @@ import Image from "next/image";
 export default function Header() {
   const router = useRouter();
   const [openMobile, setOpenMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScroll = useRef(0);
+  const rafRef = useRef(null);
 
   const nav = useMemo(() => NAV, []);
 
@@ -17,6 +26,7 @@ export default function Header() {
     router.events?.on?.("routeChangeStart", handleRoute);
     return () => router.events?.off?.("routeChangeStart", handleRoute);
   }, [router.events]);
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") setOpenMobile(false);
@@ -24,12 +34,39 @@ export default function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
   const toggleMobile = useCallback(() => setOpenMobile((v) => !v), []);
+
+  useEffect(() => {
+    const enter = 80;
+    const exit = 40;
+    let ticking = false;
+
+    const update = () => {
+      const y = window.scrollY || 0;
+      lastScroll.current = y;
+      if (!ticking) {
+        ticking = true;
+        rafRef.current = requestAnimationFrame(() => {
+          if (y > enter && !scrolled) setScrolled(true);
+          if (y < exit && scrolled) setScrolled(false);
+          ticking = false;
+        });
+      }
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener("scroll", update);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [scrolled]);
 
   return (
     <header className={styles.header}>
-      <div className={styles.bar}>
-        <div className="container">
+      <div className={`${styles.bar} ${scrolled ? styles.pill : ""}`}>
+        <div className={styles.headerContainer}>
           <div className={styles.inner}>
             <div className={styles.left}>
               <Link href="/" className={styles.logo} aria-label="Home">
@@ -39,19 +76,14 @@ export default function Header() {
                   width={140}
                   height={40}
                   priority
-                  style={{
-                    objectFit: "contain",
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
                 />
               </Link>
             </div>
 
-            <nav className={styles.center} aria-label="Primary navigation">
+            <nav className={styles.center}>
               <ul className={styles.navList}>
-                {nav.map((n, idx) => (
-                  <li key={idx} className={styles.navItem}>
+                {nav.map((n, i) => (
+                  <li key={i} className={styles.navItem}>
                     {n.items ? (
                       <NavDropdown title={n.label} items={n.items} />
                     ) : (
@@ -71,7 +103,6 @@ export default function Header() {
 
               <button
                 className={`${styles.burger} ${openMobile ? styles.open : ""}`}
-                aria-label="Toggle menu"
                 aria-expanded={openMobile}
                 onClick={toggleMobile}
               >
@@ -84,10 +115,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div
-        className={`${styles.mobileNav} ${openMobile ? styles.show : ""}`}
-        aria-hidden={!openMobile}
-      >
+      <div className={`${styles.mobileNav} ${openMobile ? styles.show : ""}`}>
         <div className="container">
           <ul className={styles.mobileList}>
             {nav.map((n, i) => (

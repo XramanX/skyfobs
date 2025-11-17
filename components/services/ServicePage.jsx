@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ServiceCard from "../common/ServiceCard";
 import styles from "../../styles/components/managedCloud.module.scss";
+import Button from "../ui/Button";
 
 export default function ServicePage({
   id,
@@ -36,10 +37,7 @@ export default function ServicePage({
 
                 <div className={styles.ctaRow}>
                   <Link href={ctaHref} className="button primary">
-                    {ctaLabel}
-                  </Link>
-                  <Link href="/services" className="button ghost">
-                    All services
+                    <Button>{ctaLabel}</Button>
                   </Link>
                 </div>
               </div>
@@ -85,7 +83,6 @@ export default function ServicePage({
             </div>
           </div>
         </section>
-
         <section className={styles.tabsSection}>
           <div className="container">
             <div className={styles.panelWrap}>

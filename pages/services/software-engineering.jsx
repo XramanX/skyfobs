@@ -6,19 +6,19 @@ const cards = [
     id: "arch",
     title: "Platform Architecture",
     text: "Design resilient microservice and event-driven architectures for scale.",
-    href: "/services/software-engineering#arch",
+    href: "/services/software-engineering/platform-architecture",
   },
   {
     id: "dev",
     title: "Full-stack Engineering",
     text: "Expert teams building performant and maintainable apps with modern frameworks.",
-    href: "/services/software-engineering#dev",
+    href: "/services/software-engineering/full-stack-engineering",
   },
   {
     id: "qa",
     title: "Quality & CI",
     text: "Automated testing, CI pipelines and deploy gating to keep releases safe.",
-    href: "/services/software-engineering#qa",
+    href: "/services/software-engineering/quality-cli",
   },
 ];
 
@@ -36,7 +36,7 @@ export default function Page() {
       ]}
       cards={cards}
       ctaHref="/contact"
-      ctaLabel="Talk to engineering"
+      // ctaLabel="Talk to engineering"
       imageSrc={"/software-engineer.svg"}
       imageAlt="sde image"
     />
