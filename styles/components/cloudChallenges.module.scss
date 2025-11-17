@@ -1,117 +1,139 @@
- :root {
-     --section-padding-min: 2.25rem;
-     --section-padding-max: 4.5rem;
-     --muted: #6b7280;
-     --heading-color: #071024;
-     --max-section-width: 1200px;
- }
+:root {
+    --section-padding-min: 2.25rem;
+    /* mobile */
+    --section-padding-max: 4.5rem;
+    /* desktop */
+    --section-inline-padding: 1.25rem;
+    /* side padding */
+    --muted: #6b7280;
+    --heading-color: #071024;
+    --max-section-width: 1200px;
+}
 
- .section {
-     position: relative;
-     background: var(--primary);
-     overflow: hidden;
-     min-height: 46vh;
-     display: flex;
-     align-items: center;
- }
+.section {
+    position: relative;
+    background: var(--primary);
+    overflow: hidden;
+
+    /* PERFECT responsive padding */
+    padding: clamp(var(--section-padding-min), 5vw, var(--section-padding-max)) var(--section-inline-padding);
+
+    min-height: 46vh;
+    display: flex;
+    align-items: center;
+}
+
+/* center the content nicely */
+.section>.grid {
+    width: 100%;
+    max-width: var(--max-section-width);
+    margin: 0 auto;
+    /* centers section content */
+}
+
+/* two-column layout */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 520px;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
 
 
+}
 
- /* two-column grid */
- .grid {
-     display: grid;
-     grid-template-columns: 1fr 520px;
-     gap: clamp(1.5rem, 4vw, 3rem);
-     align-items: center;
- }
+/* LEFT */
+.left {
+    max-width: 46ch;
 
- /* LEFT */
- .left {
-     max-width: 46ch;
+    /* spacing between text blocks */
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
 
- }
+.kicker {
+    font-size: 0.75rem;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin: 0;
+    text-transform: uppercase;
+}
 
- /* ensure kicker and title don't add extra margin */
- .kicker {
-     font-size: 0.75rem;
-     //  color: var(--muted);
-     color: white;
+.title {
+    margin: 0;
+    color: white;
+    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    line-height: 1.06;
+    font-weight: 800;
+}
 
-     font-weight: 700;
-     letter-spacing: 0.12em;
-     margin: 0 0 0.75rem 0;
-     /* no unexpected top margin */
-     text-transform: uppercase;
- }
+/* Paragraph spacing */
+.content {
+    margin-top: 0.5rem;
+}
 
- .title {
-     margin: 0 0 1rem 0;
-     color: white;
+.paragraph {
+    color: white;
+    font-size: clamp(0.95rem, 1.1vw, 1.02rem);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 56ch;
+}
 
-     font-size: clamp(1.6rem, 3.6vw, 2.4rem);
-     //  color: var(--heading-color);
-     line-height: 1.06;
-     font-weight: 800;
- }
+/* RIGHT */
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
- /* content paragraphs */
- .content {
-     margin-top: 0.5rem;
- }
+/* Illustration image */
+.illustration {
+    width: 100%;
+    height: auto;
+    max-width: 520px;
+    border-radius: 8px;
+    background: transparent;
+    display: block;
+    padding: 0;
+    margin: 0;
+}
 
- .paragraph {
-     color: white;
+/* MOBILE: stack layout */
+@media (max-width: 980px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        /* extra gap when stacked */
+        margin-top: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
 
-     font-size: clamp(0.95rem, 1.1vw, 1.02rem);
-     line-height: 1.7;
-     margin: 0 0 1.25rem 0;
-     max-width: 56ch;
- }
+    .illustration {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
 
- /* RIGHT: illustration */
- .right {
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
+@media (max-width: 520px) {
+    .title {
+        font-size: clamp(1.25rem, 6vw, 1.5rem);
+    }
 
- /* ensure illustration has no top margin or stray display block gaps */
- .illustration {
-     width: 100%;
-     height: auto;
-     max-width: 520px;
-     border-radius: 8px;
-     background: transparent;
-     display: block;
-     /* prevents inline image baseline gaps */
-     padding: 0;
-     margin: 0;
-     /* force no margins */
- }
+    .paragraph {
+        font-size: 0.95rem;
+    }
 
- /* Responsive: stack columns */
- @media (max-width: 980px) {
-     .grid {
-         grid-template-columns: 1fr;
-         gap: 1.5rem;
-     }
+    .illustration {
+        max-width: 320px;
+    }
 
-     .illustration {
-         max-width: 420px;
-         margin: 0 auto;
-     }
- }
+    .grid {
+        gap: 1.5rem;
+    }
 
- @media (max-width: 520px) {
-     .title {
-         font-size: clamp(1.25rem, 6vw, 1.5rem);
-     }
-
-     .paragraph {
-         font-size: 0.95rem;
-     }
-
-     .illustration {
-         max-width: 320px;
-     }
- }
+    .section {
+        padding: 0px;
+    }
+}

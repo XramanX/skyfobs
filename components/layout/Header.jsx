@@ -1,4 +1,3 @@
-// components/layout/Header.jsx
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -18,7 +17,13 @@ export default function Header() {
     router.events?.on?.("routeChangeStart", handleRoute);
     return () => router.events?.off?.("routeChangeStart", handleRoute);
   }, [router.events]);
-
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpenMobile(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
   const toggleMobile = useCallback(() => setOpenMobile((v) => !v), []);
 
   return (
@@ -31,9 +36,14 @@ export default function Header() {
                 <Image
                   src="/skyfobs.png"
                   alt="Skyfobs logo"
-                  width={180}
+                  width={140}
                   height={40}
                   priority
+                  style={{
+                    objectFit: "contain",
+                    maxWidth: "100%",
+                    height: "auto",
+                  }}
                 />
               </Link>
             </div>

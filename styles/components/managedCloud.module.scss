@@ -102,11 +102,12 @@
 
 .tabBar {
     display: flex;
+    flex-wrap: wrap;
     gap: .75rem;
-    background: rgba(10, 20, 30, 0.03);
+    // background: rgba(10, 20, 30, 0.03);
     padding: 10px;
     align-items: center;
-    justify-content: space-around;
+    // justify-content: space-around;
     border-radius: 12px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

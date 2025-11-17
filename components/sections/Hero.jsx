@@ -1,4 +1,3 @@
-// components/sections/Hero.jsx
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { FaPause, FaPlay, FaCloud, FaAws, FaNodeJs } from "react-icons/fa";
@@ -19,14 +18,19 @@ import Button from "../ui/Button";
 export default function Hero({
   title = "Your Trusted Technology Partner",
   subtitle = "Leading provider of software development and managed cloud services",
-  speed = 60,
+  speed = 60, // pixels per second
 }) {
   const [paused, setPaused] = useState(false);
-  const colRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  const colRef = useRef(null); // the element we transform
+  const viewportRef = useRef(null);
   const rafRef = useRef(null);
   const lastRef = useRef(null);
-  const heightRef = useRef(1);
   const offsetRef = useRef(0);
+  const measureRef = useRef(1); // holds height or width depending on axis
 
   const icons = useMemo(
     () => [
@@ -44,41 +48,64 @@ export default function Hero({
     []
   );
 
+  // triple items for seamless loop
   const items = useMemo(() => [...icons, ...icons, ...icons], [icons]);
 
-  const prefersReducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // run once on mount to set client-only flags (avoid SSR mismatch)
+  useEffect(() => {
+    setIsClient(true);
+    const mq =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(!!(mq && mq.matches));
+    setIsMobile(typeof window !== "undefined" && window.innerWidth <= 980);
 
-  const measure = (el) => {
-    if (!el) return 0;
+    const onResize = () => setIsMobile(window.innerWidth <= 980);
+    const onPrefChange = (e) => setPrefersReducedMotion(e.matches);
+
+    if (mq && mq.addEventListener) mq.addEventListener("change", onPrefChange);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      if (mq && mq.removeEventListener)
+        mq.removeEventListener("change", onPrefChange);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  // measure loopable length (height for desktop, width for mobile)
+  const measure = () => {
+    const el = colRef.current;
+    if (!el) return 1;
+    if (isMobile) {
+      // use 1/3 of scrollWidth because we duplicated items 3x
+      return Math.max(1, el.scrollWidth / 3);
+    }
+    // vertical: use half of scrollHeight (we duplicated 3x but layout is column)
     return Math.max(1, el.scrollHeight / 2);
   };
 
   useEffect(() => {
-    const update = () => {
-      heightRef.current = measure(colRef.current);
-      offsetRef.current = offsetRef.current % heightRef.current;
-      if (colRef.current) {
+    // update measurement whenever layout/mode changes
+    measureRef.current = measure();
+    // keep offset within bounds
+    offsetRef.current = offsetRef.current % (measureRef.current || 1);
+
+    // ensure transform reset on mode change
+    if (colRef.current) {
+      if (isMobile)
+        colRef.current.style.transform = `translateX(-${offsetRef.current}px)`;
+      else
         colRef.current.style.transform = `translateY(-${offsetRef.current}px)`;
-      }
-    };
+    }
+  }, [isMobile, isClient, items.length]);
 
-    update();
-    window.addEventListener("resize", update);
-    window.addEventListener("orientationchange", update);
-    return () => {
-      window.removeEventListener("resize", update);
-      window.removeEventListener("orientationchange", update);
-    };
-  }, []);
-
+  // animation loop (single loop handles both axes)
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (!isClient || prefersReducedMotion) return;
 
     lastRef.current = null;
-
     const step = (time) => {
       if (paused) {
         lastRef.current = time;
@@ -87,14 +114,20 @@ export default function Hero({
       }
 
       if (!lastRef.current) lastRef.current = time;
-      const dt = (time - lastRef.current) / 1000;
+      const dt = (time - lastRef.current) / 1000; // seconds
       lastRef.current = time;
 
+      // speed is in px/sec — works for both axes
+      measureRef.current = measure();
       offsetRef.current =
-        (offsetRef.current + dt * speed) % (heightRef.current || 1);
+        (offsetRef.current + dt * speed) % (measureRef.current || 1);
 
       if (colRef.current) {
-        colRef.current.style.transform = `translateY(-${offsetRef.current}px)`;
+        if (isMobile) {
+          colRef.current.style.transform = `translateX(-${offsetRef.current}px)`;
+        } else {
+          colRef.current.style.transform = `translateY(-${offsetRef.current}px)`;
+        }
       }
 
       rafRef.current = requestAnimationFrame(step);
@@ -102,7 +135,7 @@ export default function Hero({
 
     rafRef.current = requestAnimationFrame(step);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [paused, speed, prefersReducedMotion]);
+  }, [isClient, isMobile, paused, speed, prefersReducedMotion]);
 
   const togglePaused = () => {
     if (prefersReducedMotion) return;
@@ -136,7 +169,7 @@ export default function Hero({
 
           <aside className={styles.right} aria-hidden={false}>
             <div className={styles.logosCard}>
-              <div className={styles.marqueeViewportVertical}>
+              <div ref={viewportRef} className={styles.marqueeViewportVertical}>
                 <div ref={colRef} className={styles.marqueeColumn} aria-hidden>
                   {items.map((Icon, i) => {
                     const C = Icon;

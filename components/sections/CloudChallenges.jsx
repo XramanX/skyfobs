@@ -20,7 +20,6 @@ export default function CloudChallenges({
     >
       <div className="container">
         <div className={styles.grid}>
-          {/* LEFT */}
           <div className={styles.left}>
             <div className={styles.kicker}>{kicker}</div>
 
@@ -37,7 +36,6 @@ export default function CloudChallenges({
             </div>
           </div>
 
-          {/* RIGHT */}
           <div
             className={styles.right}
             role="img"

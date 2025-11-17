@@ -4,7 +4,6 @@ import ServiceCard from "../common/ServiceCard";
 import TagButton from "../ui/TagButton";
 import styles from "../../styles/components/servicesSection.module.scss";
 
-/* ... your ALL_SERVICES and FILTERS unchanged ... */
 const ALL_SERVICES = [
   {
     id: "software",
@@ -131,7 +130,6 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
           ))}
         </div>
 
-        {/* Mobile slider: reveal as one block (cards inside still render) */}
         <div
           className={styles.mobileSlider}
           role="region"
