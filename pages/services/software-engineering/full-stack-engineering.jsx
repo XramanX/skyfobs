@@ -4,10 +4,23 @@ import IconFeatureGrid from "../../../components/service-detail/IconFeatureGrid"
 import ContentSection from "../../../components/service-detail/ContentSection";
 
 import { FaPaintBrush, FaBolt, FaDatabase } from "react-icons/fa";
+import Head from "next/head";
 
 export default function FullStackEngineering() {
   return (
     <>
+      <Head>
+        <title>Full-stack Engineering | Skyfobs</title>
+        <meta
+          name="description"
+          content="Expert full-stack engineering services including frontend, backend, and cloud architecture solutions."
+        />
+        <meta property="og:title" content="Full-stack Engineering | Skyfobs" />
+        <meta
+          property="og:description"
+          content="Expert full-stack engineering services including frontend, backend, and cloud architecture solutions."
+        />
+      </Head>
       <HeroSection
         title="Full-stack Engineering"
         intro="Expert teams building performant and maintainable apps with modern frameworks."

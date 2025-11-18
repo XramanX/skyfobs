@@ -203,3 +203,15 @@ a {
         opacity: 1 !important;
     }
 }
+
+.progress-container {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+}

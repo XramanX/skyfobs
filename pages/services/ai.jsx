@@ -6,19 +6,19 @@ const cards = [
     id: "ml",
     title: "ML Platforms",
     text: "Reusable MLOps pipelines and model serving for production scale.",
-    href: "/services/ai#ml",
+    href: "/services/ai/ml-platforms",
   },
   {
     id: "gen",
     title: "GenAI Integrations",
     text: "Secure prompt design, retrieval-augmented generation, and guardrails.",
-    href: "/services/ai#gen",
+    href: "/services/ai/gen-ai-integrations",
   },
   {
     id: "ops",
     title: "Data & Feature Stores",
     text: "Reliable data pipelines, feature stores and model observability.",
-    href: "/services/ai#ops",
+    href: "/services/ai/data-feature-stores",
   },
 ];
 

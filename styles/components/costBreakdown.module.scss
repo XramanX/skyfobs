@@ -1,0 +1,250 @@
+:local(.wrapper) {
+    width: 100%;
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+    border-radius: 14px;
+    padding: 1.15rem;
+    box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
+    border: 1px solid rgba(12, 20, 30, 0.04);
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #071024;
+}
+
+/* header */
+:local(.header) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+:local(.title) {
+    font-weight: 900;
+    font-size: 1.02rem;
+    letter-spacing: -0.2px;
+}
+
+:local(.subtitle) {
+    font-size: 0.85rem;
+    color: #475569;
+    margin-top: 4px;
+}
+
+:local(.total) {
+    font-weight: 900;
+    font-size: 1.35rem;
+    color: #071024;
+    background: linear-gradient(90deg, rgba(79, 70, 229, 0.06), rgba(37, 99, 235, 0.04));
+    padding: 6px 12px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.04);
+}
+
+/* grid layout */
+:local(.grid) {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 1rem;
+    align-items: start;
+}
+
+:local(.list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+:local(.item) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    // padding: 0.45rem;
+    border-radius: 10px;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+:local(.item):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(12, 20, 30, 0.06);
+}
+
+:local(.itemMeta) {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+:local(.itemLabel) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 0.96rem;
+    color: #071024;
+}
+
+:local(.miniSwatch) {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(12, 20, 30, 0.06);
+    flex: 0 0 auto;
+}
+
+:local(.itemAmount) {
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: #0b1220;
+}
+
+/* Progress wrapper (keeps spacing consistent) */
+:local(.progressWrap) {
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* right side: stacked visual + legend */
+:local(.side) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    align-items: stretch;
+}
+
+/* stacked horizontal slices visual */
+:local(.piePlaceholder) {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(12, 20, 30, 0.02), rgba(12, 20, 30, 0.01));
+    border-radius: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background 220ms ease;
+}
+
+:local(.stacked) {
+    width: 100%;
+    height: 28px;
+    display: flex;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: 0 8px 28px rgba(37, 99, 235, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* slices: widths set inline, background set inline to match legend */
+:local(.slice) {
+    height: 100%;
+    transition: width 620ms cubic-bezier(.2, .9, .2, 1), transform 220ms ease;
+
+    &:hover {
+        transform: scaleY(1.06);
+    }
+}
+
+/* legend */
+:local(.legend) {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+:local(.legendRow) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background 160ms ease;
+}
+
+:local(.legendRow):hover {
+    background: rgba(79, 70, 229, 0.03);
+}
+
+:local(.legendKey) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #071024;
+}
+
+:local(.swatch) {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(12, 20, 30, 0.06);
+    flex: 0 0 auto;
+}
+
+:local(.legendLabel) {
+    display: inline-block;
+    max-width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:local(.legendVal) {
+    font-weight: 800;
+    font-size: 0.94rem;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    :local(.grid) {
+        grid-template-columns: 1fr;
+    }
+
+    :local(.piePlaceholder) {
+        height: 56px;
+    }
+
+    :local(.stacked) {
+        height: 18px;
+    }
+
+    :local(.legend) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    :local(.legendRow) {
+        width: calc(50% - 6px);
+        padding: 6px 8px;
+    }
+}
+
+@media (max-width: 520px) {
+    :local(.piePlaceholder) {
+        display: none;
+    }
+
+    :local(.legendRow) {
+        width: 100%;
+    }
+
+    :local(.title) {
+        font-size: 0.96rem;
+    }
+
+    :local(.total) {
+        font-size: 1.1rem;
+        padding: 5px 10px;
+    }
+}

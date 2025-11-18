@@ -6,19 +6,19 @@ const cards = [
     id: "assess",
     title: "Security Assessments",
     text: "Threat modelling, architecture reviews and pentests.",
-    href: "/services/security#assess",
+    href: "/services/security/security-assessments",
   },
   {
     id: "devsec",
     title: "DevSecOps",
     text: "Shift-left security in CI, secrets management and policy-as-code.",
-    href: "/services/security#devsec",
+    href: "/services/security/devsec",
   },
   {
     id: "infra",
     title: "Platform Hardening",
     text: "Network zoning, IAM controls and automated compliance checks.",
-    href: "/services/security#infra",
+    href: "/services/security/platform-hardening",
   },
 ];
 

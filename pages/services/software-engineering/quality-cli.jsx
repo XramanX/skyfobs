@@ -12,16 +12,23 @@ import {
   FaCheckCircle,
   FaSatelliteDish,
 } from "react-icons/fa";
+import Head from "next/head";
 
 export default function QualityAndCI() {
   return (
     <>
+      <Head>
+        <title>Quality & CI — Skyfobs</title>
+        <meta
+          name="description"
+          content="Quality assurance and continuous integration form the backbone of modern software delivery, catching issues early, maintaining code standards, and enabling rapid, confident deployments."
+        />
+      </Head>
       <HeroSection
         title="Quality Assurance & Continuous Integration"
         intro="Quality assurance and continuous integration form the backbone of modern software delivery, catching issues early, maintaining code standards, and enabling rapid, confident deployments."
       />
 
-      {/* Primary feature grid: Code / Test / Deploy */}
       <IconFeatureGrid
         items={[
           {
@@ -42,7 +49,6 @@ export default function QualityAndCI() {
         ]}
       />
 
-      {/* Compact metrics grid (visual shorthand for the stats you shared) */}
       <IconFeatureGrid
         items={[
           {

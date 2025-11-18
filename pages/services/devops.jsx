@@ -6,19 +6,19 @@ const cards = [
     id: "infra",
     title: "Infrastructure as Code",
     text: "Modular IaC with policy gates and drift detection.",
-    href: "/services/devops#iac",
+    href: "/services/devops/iac",
   },
   {
     id: "ci",
     title: "CI/CD",
     text: "Secure, fast pipelines that ship features safely to production.",
-    href: "/services/devops#ci",
+    href: "/services/devops/ci-cd",
   },
   {
     id: "obs",
     title: "Observability",
     text: "Logs, metrics and tracing tied into incident workflows.",
-    href: "/services/devops#obs",
+    href: "/services/devops/observability",
   },
 ];
 

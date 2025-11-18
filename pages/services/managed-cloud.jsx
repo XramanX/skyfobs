@@ -1,4 +1,3 @@
-// pages/managed-cloud.jsx
 import React, {
   useState,
   useMemo,
@@ -48,19 +47,13 @@ const CONTENT = {
         id: "assessment",
         title: "Assessment & Strategy",
         text: "Prioritise workloads, estimate costs and build a migration roadmap aligned to business outcomes.",
-        href: "/services/migration-assessment",
+        href: "/services/managed-cloud/cloud-migration-and-moderation/assessment-strategy",
       },
       {
         id: "pipelines",
         title: "Automated Migration Pipelines",
         text: "Repeatable IaC-driven pipelines for provisioning, migration, validation and rollback.",
-        href: "/services/migration-pipelines",
-      },
-      {
-        id: "optimize",
-        title: "Post-Migration Optimization",
-        text: "Right-sizing, tagging, and FinOps practices to reduce cloud costs after migration.",
-        href: "/services/migration-optimization",
+        href: "/services/managed-cloud/cloud-migration-and-moderation/automated-migration-pipelines",
       },
     ],
   },
@@ -79,19 +72,19 @@ const CONTENT = {
         id: "hardened",
         title: "Hardened Platform",
         text: "Built using best-practice baselines, CIS hardening and immutable infrastructure.",
-        href: "/services/private-hardened-platform",
+        href: "/services/managed-cloud/private-cloud/hardened-platform",
       },
       {
         id: "compliance",
         title: "Compliance & Audit",
         text: "Support for PCI / SOC / ISO controls with evidence collection and reporting.",
-        href: "/services/private-compliance",
+        href: "/services/managed-cloud/private-cloud/private-compliance",
       },
       {
         id: "ops",
         title: "Managed Operations",
         text: "24/7 platform ops, patching, backups and capacity planning.",
-        href: "/services/private-ops",
+        href: "/services/managed-cloud/private-cloud/managed-ops",
       },
     ],
   },
@@ -110,19 +103,19 @@ const CONTENT = {
         id: "network",
         title: "Network & Connectivity",
         text: "Low-latency links, secure peering and resilient routes between datacenters and cloud.",
-        href: "/services/hybrid-network",
+        href: "/services/managed-cloud/hybrid-cloud/network-connectivity",
       },
       {
         id: "mesh",
         title: "Unified Service Mesh",
         text: "Cross-environment service connectivity, resilience and observability.",
-        href: "/services/hybrid-mesh",
+        href: "/services/managed-cloud/hybrid-cloud/unified-service-mesh",
       },
       {
         id: "datafabric",
         title: "Data Fabric",
         text: "Secure replication, tiering and governance across environments.",
-        href: "/services/hybrid-datafabric",
+        href: "/services/managed-cloud/hybrid-cloud/data-fabric",
       },
     ],
   },
@@ -141,19 +134,19 @@ const CONTENT = {
         id: "strategy",
         title: "DR Strategy",
         text: "Design warm/cold/hot standby models aligned to business impact.",
-        href: "/services/dr-strategy",
+        href: "/services/managed-cloud/disaster-recovery/dr-strategy",
       },
       {
         id: "automation",
         title: "Automation & Orchestration",
         text: "Scripts and pipelines to automate failover, DNS, and service re-mapping.",
-        href: "/services/dr-automation",
+        href: "/services/managed-cloud/disaster-recovery/automation-orchestration",
       },
       {
         id: "testing",
         title: "Test & Validate",
         text: "Planned rehearsals with integrity checks and post-mortem reports.",
-        href: "/services/dr-testing",
+        href: "/services/managed-cloud/disaster-recovery/test-validate",
       },
     ],
   },
@@ -172,19 +165,19 @@ const CONTENT = {
         id: "governance",
         title: "Platform Governance",
         text: "Single-pane policy enforcement and identity across providers.",
-        href: "/services/multicloud-governance",
+        href: "/services/managed-cloud/multi-cloud-management/platform-governance",
       },
       {
         id: "observability",
         title: "Observability Mesh",
         text: "Correlation and traces across services in different clouds.",
-        href: "/services/multicloud-observability",
+        href: "/services/managed-cloud/multi-cloud-management/observability-mesh",
       },
       {
         id: "finops",
         title: "Cost & Tagging Controls",
         text: "Automated tagging, budgets, and anomaly detection to prevent bill surprises.",
-        href: "/services/multicloud-finops",
+        href: "/services/managed-cloud/multi-cloud-management/cost-control",
       },
     ],
   },
@@ -341,7 +334,7 @@ export default function ManagedCloudPage() {
                           title={c.title}
                           text={c.text}
                           href={c.href}
-                          learnMoreBtn={false}
+                          // learnMoreBtn={false}
                         />
                       ))}
                     </div>
