@@ -1,11 +1,12 @@
 import React from "react";
 import Head from "next/head";
-import { getAllPosts, getPostBySlug } from "../../data/blogs";
 import Link from "next/link";
+import { getAllPosts, getPostBySlug } from "../../data/blogs";
 import styles from "../../styles/components/blogPost.module.scss";
 import { formatDateFriendly } from "@/utils/formatDate";
 import Button from "@/components/ui/Button";
 import { IoArrowBack } from "react-icons/io5";
+import CodeBlock from "@/components/ui/CodeBlock";
 
 export async function getStaticPaths() {
   const posts = getAllPosts();
@@ -42,20 +43,47 @@ export default function BlogPost({ post }) {
               </div>
 
               <h1 className={styles.title}>{post.title}</h1>
-              <div
-                className={styles.hero}
-                dangerouslySetInnerHTML={{ __html: post.heroHtml }}
-              />
+              {post.heroHtml && (
+                <div
+                  className={styles.hero}
+                  dangerouslySetInnerHTML={{ __html: post.heroHtml }}
+                />
+              )}
             </header>
 
-            <section
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-            />
+            <section className={styles.content}>
+              {Array.isArray(post.blocks) ? (
+                post.blocks.map((b, i) => {
+                  if (b.type === "html") {
+                    return (
+                      <div
+                        key={i}
+                        dangerouslySetInnerHTML={{ __html: b.html }}
+                      />
+                    );
+                  }
+                  if (b.type === "code") {
+                    return (
+                      <CodeBlock
+                        key={i}
+                        code={b.code}
+                        lang={b.lang}
+                        caption={b.caption}
+                      />
+                    );
+                  }
+                  return null;
+                })
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{ __html: post.contentHtml || "" }}
+                />
+              )}
+            </section>
 
             <footer className={styles.footer}>
-              <Link href="/blog" className="button ghost">
-                <Button>
+              <Link href="/blog">
+                <Button variant="ghost">
                   <IoArrowBack /> Back to articles
                 </Button>
               </Link>

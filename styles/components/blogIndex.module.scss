@@ -1,38 +1,197 @@
-.page {
-    padding: clamp(2rem, 5vw, 3.5rem) 0;
-}
+ .page {
+     padding: clamp(2rem, 5vw, 3.5rem) 0;
+ }
 
-.header {
-    margin-bottom: 1.25rem;
+ .header {
+     margin-bottom: 1.25rem;
+ }
 
-    h1 {
-        margin: 0 0 .4rem 0;
-    }
+ .title {
+     margin: 0 0 .35rem 0;
+     font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+     font-weight: 800;
+     line-height: 1.02;
+ }
 
-    p {
-        color: #6b7280;
-    }
-}
+ .lead {
+     color: #6b7280;
+     margin: 0 0 1rem 0;
+ }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
+ .controls {
+     display: flex;
+     gap: 1rem;
+     align-items: center;
+     margin-top: 0.9rem;
+     flex-wrap: wrap;
+ }
 
-.moreRow {
-    margin-top: 1.2rem;
-}
+ .multiselect {
+     min-width: 260px;
+     max-width: 420px;
+     width: 100%;
+ }
 
-/* responsive */
-@media (max-width: 1100px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+ .details {
+     position: relative;
+     font-size: 0;
+ }
 
-@media (max-width: 720px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-}
+ .summary {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 0.6rem;
+     width: 100%;
+     padding: 0.5rem 0.75rem;
+     border-radius: 10px;
+     border: 1px solid rgba(7, 16, 36, 0.08);
+     background: #fff;
+     box-shadow: 0 6px 18px rgba(11, 15, 30, 0.03);
+     cursor: pointer;
+     font-weight: 700;
+     color: #071024;
+ }
+
+ .summaryLabel {
+     font-size: 0.95rem;
+     text-transform: none;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+
+ .chev {
+     font-size: 0.9rem;
+     opacity: 0.65;
+     transform-origin: center;
+ }
+
+ .details[open] .chev {
+     transform: rotate(180deg);
+ }
+
+ .options {
+     position: absolute;
+     top: calc(100% + 10px);
+     left: 50%;
+     transform: translateX(-50%);
+     background: #fff;
+     border-radius: 10px;
+     padding: 0.6rem;
+     box-shadow: 0 18px 44px rgba(12, 20, 30, 0.08);
+     border: 1px solid rgba(7, 16, 36, 0.06);
+     display: grid;
+     gap: 0.6rem;
+     min-width: 260px;
+     max-height: 50vh;
+     overflow: auto;
+     z-index: 60;
+ }
+
+ .optionsList {
+     display: grid;
+     gap: 0.45rem;
+ }
+
+ .option {
+     display: inline-flex;
+     align-items: center;
+     gap: 0.5rem;
+     padding: 0.45rem 0.6rem;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: 700;
+     color: #071024;
+     text-align: left;
+     border: none;
+     background: transparent;
+ }
+
+ .option:hover {
+     background: rgba(7, 16, 36, 0.03);
+ }
+
+ .activeOption {
+     background: linear-gradient(90deg, rgba(124, 58, 237, 0.12), rgba(91, 33, 182, 0.08));
+     border: 1px solid rgba(91, 33, 182, 0.08);
+ }
+
+ .actions {
+     display: flex;
+     gap: 0.5rem;
+     justify-content: flex-end;
+     align-items: center;
+     margin-top: 0.25rem;
+ }
+
+ .btnApply {
+     padding: 0.35rem 0.6rem;
+     border-radius: 8px;
+     background: linear-gradient(90deg, #7c3aed, #5b21b6);
+     color: #fff;
+     font-weight: 800;
+     border: none;
+     cursor: pointer;
+     font-size: 0.9rem;
+ }
+
+ .btnClear {
+     border-radius: 8px;
+     background: transparent;
+     color: #071024;
+     font-weight: 800;
+     border: 1px solid rgba(7, 16, 36, 0.06);
+     cursor: pointer;
+     font-size: 0.9rem;
+ }
+
+ .btnClear:hover {
+     color: white;
+     background: rgb(253, 176, 176);
+ }
+
+ .grid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 1rem;
+     margin-top: 1.25rem;
+ }
+
+ .moreRow {
+     margin-top: 1.2rem;
+ }
+
+ @media (max-width: 1100px) {
+     .grid {
+         grid-template-columns: repeat(2, 1fr);
+     }
+ }
+
+ @media (max-width: 720px) {
+     .grid {
+         grid-template-columns: 1fr;
+     }
+
+     .multiselect {
+         min-width: 100%;
+     }
+
+     .options {
+         left: 50%;
+         transform: translateX(-50%);
+         min-width: 92%;
+     }
+ }
+
+ .srOnly {
+     position: absolute !important;
+     width: 1px !important;
+     height: 1px !important;
+     padding: 0 !important;
+     margin: -1px !important;
+     overflow: hidden !important;
+     clip: rect(0, 0, 0, 0) !important;
+     white-space: nowrap !important;
+     border: 0 !important;
+ }

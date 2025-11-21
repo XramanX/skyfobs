@@ -1,0 +1,89 @@
+.codeWrap {
+    margin: 1.1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0b1220 0%, #071024 100%);
+    color: #e6eef8;
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+}
+
+.codeCaption {
+    padding: 0.5rem 0.75rem;
+    font-weight: 700;
+    color: #e6eef8;
+    background: linear-gradient(90deg, rgba(91, 33, 182, 0.06), rgba(91, 33, 182, 0.02));
+}
+
+.codeToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.45rem 0.6rem;
+    background: rgba(255, 255, 255, 0.02);
+    gap: 0.5rem;
+}
+
+.lang {
+    font-size: 0.8rem;
+    text-transform: lowercase;
+    color: #cbd5e1;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    padding: 0.16rem 0.5rem;
+}
+
+.copyBtn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    color: #e6eef8;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.copyBtn:active {
+    transform: translateY(1px);
+}
+
+.pre {
+    margin: 0;
+    padding: 0.9rem 1rem;
+    overflow: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 2;
+}
+
+.code {
+    display: block;
+    color: #e6eef8;
+}
+
+.code .token-string {
+    color: #c3e88d;
+}
+
+.code .token-keyword {
+    color: #ffb86b;
+    font-weight: 700;
+}
+
+.code .token-number {
+    color: #ffd580;
+}
+
+/* responsive */
+@media (max-width: 720px) {
+    .pre {
+        padding: 0.7rem;
+        font-size: 0.86rem;
+    }
+
+    .codeToolbar {
+        padding: 0.35rem 0.5rem;
+    }
+}

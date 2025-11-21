@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../../styles/components/blogCard.module.scss";
 import { formatDateFriendly } from "@/utils/formatDate";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import Button from "../ui/Button";
 
 export default function BlogCard({
   title,
@@ -31,10 +32,6 @@ export default function BlogCard({
       <p className={styles.excerpt}>{excerpt}</p>
 
       <div className={styles.row}>
-        <Link href={`/blog/${slug}`} className={styles.readMore}>
-          Read article <IoArrowForwardOutline />
-        </Link>
-
         <div className={styles.tags}>
           {tags.map((t) => (
             <span key={t} className={styles.tag}>
@@ -42,6 +39,9 @@ export default function BlogCard({
             </span>
           ))}
         </div>
+        <Link href={`/blog/${slug}`} className={styles.readMore}>
+          Read article <IoArrowForwardOutline />
+        </Link>
       </div>
     </article>
   );
