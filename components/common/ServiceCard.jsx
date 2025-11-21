@@ -1,4 +1,3 @@
-// components/common/ServiceCard.jsx
 import React from "react";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";

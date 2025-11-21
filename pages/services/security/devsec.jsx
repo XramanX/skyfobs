@@ -27,16 +27,16 @@ export default function DevSecOps() {
   return (
     <>
       <Head>
-        <title>DevSecOps — Skyfobs</title>
+        <title>DevSecOps - Skyfobs</title>
         <meta
           name="description"
-          content="Embed security across the software lifecycle — from code to cloud. Automate testing, enforce policy-as-code, and make security a shared responsibility."
+          content="Embed security across the software lifecycle - from code to cloud. Automate testing, enforce policy-as-code, and make security a shared responsibility."
         />
       </Head>
 
       <HeroSection
         title="DevSecOps"
-        intro="Embed security across the software lifecycle — from code to cloud. Automate testing, enforce policy-as-code, and make security a shared responsibility."
+        intro="Embed security across the software lifecycle - from code to cloud. Automate testing, enforce policy-as-code, and make security a shared responsibility."
       />
 
       <section
@@ -80,7 +80,7 @@ export default function DevSecOps() {
           },
 
           {
-            heading: "Shift-Left Security — Early Security Integration",
+            heading: "Shift-Left Security - Early Security Integration",
             paragraphs: [
               "Shift-left security moves testing earlier in development: in the IDE, pre-commit hooks, and CI. Developers get immediate feedback on security issues so vulnerabilities are cheaper and faster to fix, reducing security debt and preventing issues from reaching production.",
             ],
@@ -101,14 +101,14 @@ export default function DevSecOps() {
           },
 
           {
-            heading: "Automated Security Testing — SAST",
+            heading: "Automated Security Testing - SAST",
             paragraphs: [
               "Static Application Security Testing analyzes source code for vulnerabilities without execution. Integrated SAST scans in CI catch issues at commit time and block merges when critical risks are detected, providing remediation guidance and code examples.",
             ],
           },
 
           {
-            heading: "Automated Security Testing — DAST",
+            heading: "Automated Security Testing - DAST",
             paragraphs: [
               "Dynamic testing evaluates running applications the way an attacker would. DAST tools run against staging environments to surface runtime issues like injection flaws, auth bypasses, and misconfigurations before deployment.",
             ],
@@ -159,7 +159,7 @@ export default function DevSecOps() {
           {
             heading: "Security Champions Program",
             paragraphs: [
-              "Security champions embed expertise within development teams. They review pull requests for security issues, mentor peers, and act as a bridge to centralized security teams—scaling security practices while maintaining velocity.",
+              "Security champions embed expertise within development teams. They review pull requests for security issues, mentor peers, and act as a bridge to centralized security teams-scaling security practices while maintaining velocity.",
             ],
           },
         ]}

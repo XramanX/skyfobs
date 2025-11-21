@@ -46,7 +46,7 @@ export default function DRAutomationOrchestration() {
     {
       icon: <FaClock />,
       title: "Faster Recovery",
-      text: "Minutes instead of hours — automated detection and orchestration shorten RTOs.",
+      text: "Minutes instead of hours - automated detection and orchestration shorten RTOs.",
     },
     {
       icon: <FaTasks />,
@@ -68,16 +68,16 @@ export default function DRAutomationOrchestration() {
   return (
     <>
       <Head>
-        <title>Automation & Orchestration — Skyfobs</title>
+        <title>Automation & Orchestration - Skyfobs</title>
         <meta
           name="description"
-          content="Automate disaster recovery: fast detection, orchestrated failover, automated validation, and notifications — minimize downtime and preserve business continuity."
+          content="Automate disaster recovery: fast detection, orchestrated failover, automated validation, and notifications - minimize downtime and preserve business continuity."
         />
       </Head>
 
       <HeroSection
         title="Disaster Recovery Automation & Orchestration"
-        intro="Turn DR runbooks into reliable, repeatable automation — detect failures fast, failover safely, validate automatically, and keep stakeholders informed."
+        intro="Turn DR runbooks into reliable, repeatable automation - detect failures fast, failover safely, validate automatically, and keep stakeholders informed."
       />
 
       <LinkedSteps items={linked} size="md" />
@@ -87,16 +87,16 @@ export default function DRAutomationOrchestration() {
       <ContentSection
         sections={[
           {
-            heading: "Automation & Orchestration — Overview",
+            heading: "Automation & Orchestration - Overview",
             paragraphs: [
               "DR automation transforms recovery from manual, error-prone processes into reliable, repeatable procedures. Through intelligent monitoring, automated failover, orchestrated workflows, and comprehensive validation, automation reduces recovery time, eliminates human error, and ensures consistent execution during high-pressure disaster scenarios.",
             ],
           },
 
           {
-            heading: "Automated Failover — Health Monitoring & Detection",
+            heading: "Automated Failover - Health Monitoring & Detection",
             paragraphs: [
-              "Automated DR begins with comprehensive health monitoring detecting failures quickly. Synthetic monitoring probes systems continuously validating availability. Health check endpoints verify application functionality beyond simple ping responses. Anomaly detection identifies degraded performance indicating impending failures. Multi-point monitoring validates failures from multiple locations preventing false positives from network issues. Fast, accurate detection minimizes time between failure and recovery initiation—every second counts toward meeting RTO targets.",
+              "Automated DR begins with comprehensive health monitoring detecting failures quickly. Synthetic monitoring probes systems continuously validating availability. Health check endpoints verify application functionality beyond simple ping responses. Anomaly detection identifies degraded performance indicating impending failures. Multi-point monitoring validates failures from multiple locations preventing false positives from network issues. Fast, accurate detection minimizes time between failure and recovery initiation-every second counts toward meeting RTO targets.",
             ],
           },
 
@@ -122,7 +122,7 @@ export default function DRAutomationOrchestration() {
           },
 
           {
-            heading: "Recovery Orchestration — Infrastructure Provisioning",
+            heading: "Recovery Orchestration - Infrastructure Provisioning",
             paragraphs: [
               "Automated infrastructure provisioning creates DR environments on-demand reducing standby costs. Infrastructure as code defines complete environments in version-controlled templates. Cloud APIs enable rapid provisioning of compute, storage, and network resources. Container orchestration deploys application workloads across new infrastructure. Configuration management applies required settings and customizations. Automated provisioning transforms cold sites into operational environments in minutes rather than days of manual configuration.",
             ],
@@ -150,7 +150,7 @@ export default function DRAutomationOrchestration() {
           },
 
           {
-            heading: "Intelligent Automation — Decision & Adaptive Recovery",
+            heading: "Intelligent Automation - Decision & Adaptive Recovery",
             paragraphs: [
               "Intelligent automation makes sophisticated decisions during recovery reducing human intervention. Rule engines evaluate multiple factors determining optimal recovery actions. Machine learning predicts failure types based on symptoms guiding appropriate responses. Cost optimization selects recovery approaches balancing speed against expense. Capacity-aware placement considers resource availability when activating recovery sites. Adaptive automation adjusts recovery procedures based on failure scenarios and conditions, optimizing outcomes across varying disaster scenarios.",
             ],

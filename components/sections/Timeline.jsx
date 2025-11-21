@@ -3,12 +3,12 @@ import styles from "../../styles/components/timeline.module.scss";
 
 const EVENTS = [
   {
-    year: "2018",
+    year: "2021",
     title: "Founded",
-    text: "Started as a small consulting team solving integration challenges for banks.",
+    text: "Started as a small consulting team solving integration challenges for data base migration.",
   },
   {
-    year: "2020",
+    year: "2022",
     title: "Cloud-first shift",
     text: "Built managed cloud offerings and automated platform tooling for customers.",
   },
@@ -16,6 +16,16 @@ const EVENTS = [
     year: "2023",
     title: "Product & services",
     text: "Launched service packages for migration, observability and security.",
+  },
+  {
+    year: "2024",
+    title: "Managed services expansion",
+    text: "Scaled fully managed cloud, DevOps and support offerings for enterprise workloads.",
+  },
+  {
+    year: "2025",
+    title: "AI/GenAI",
+    text: "Integrated AI/GenAI solutions to enhance platform automation and insights.",
   },
 ];
 

@@ -17,7 +17,7 @@ export default function SecurityAssessments() {
   return (
     <>
       <Head>
-        <title>Security Assessments — Skyfobs</title>
+        <title>Security Assessments - Skyfobs</title>
         <meta
           name="description"
           content="Comprehensive evaluation of applications, systems, and infrastructure to identify vulnerabilities, validate controls, and strengthen your security posture."

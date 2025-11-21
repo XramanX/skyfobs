@@ -28,7 +28,7 @@ export default function MLPlatforms() {
   return (
     <>
       <Head>
-        <title>ML Platforms — Skyfobs</title>
+        <title>ML Platforms - Skyfobs</title>
         <meta
           name="description"
           content="End-to-end ML platforms and MLOps: data ingestion, distributed training, experiment tracking, model serving, and monitoring at scale."
@@ -37,7 +37,7 @@ export default function MLPlatforms() {
 
       <HeroSection
         title="ML Platforms"
-        intro="Platforms and best practices to build, train, deploy, and operate machine learning models at scale — reproducibly and reliably."
+        intro="Platforms and best practices to build, train, deploy, and operate machine learning models at scale - reproducibly and reliably."
       />
 
       <section

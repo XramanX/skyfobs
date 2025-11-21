@@ -39,7 +39,7 @@ export default function ManagedOperations() {
   return (
     <>
       <Head>
-        <title>Managed Operations — Skyfobs</title>
+        <title>Managed Operations - Skyfobs</title>
         <meta
           name="description"
           content="Managed operations: 24/7 monitoring, proactive maintenance, incident management, capacity planning and continuous optimization for private cloud environments."
@@ -48,7 +48,7 @@ export default function ManagedOperations() {
 
       <HeroSection
         title="Managed Operations"
-        intro="Reliable, efficient managed services for private cloud — monitoring, maintenance, incident response and continuous optimization to keep services healthy and performant."
+        intro="Reliable, efficient managed services for private cloud - monitoring, maintenance, incident response and continuous optimization to keep services healthy and performant."
       />
 
       <div className="container progress-container">

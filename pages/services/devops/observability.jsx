@@ -50,7 +50,7 @@ export default function OnCallSRE() {
   return (
     <>
       <Head>
-        <title>On-call & SRE — Skyfobs</title>
+        <title>On-call & SRE - Skyfobs</title>
         <meta
           name="description"
           content="Site Reliability Engineering: SLOs, monitoring, incident response, on-call best practices and observability to keep systems healthy and reliable."
@@ -59,7 +59,7 @@ export default function OnCallSRE() {
 
       <HeroSection
         title="On-call & Site Reliability Engineering"
-        intro="SRE practices that balance reliability and velocity — SLOs, observability, incident response, and sustainable on-call operations."
+        intro="SRE practices that balance reliability and velocity - SLOs, observability, incident response, and sustainable on-call operations."
       />
       <div className="container progress-container">
         {metrics.map((m) => (

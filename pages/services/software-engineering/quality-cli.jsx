@@ -18,7 +18,7 @@ export default function QualityAndCI() {
   return (
     <>
       <Head>
-        <title>Quality & CI — Skyfobs</title>
+        <title>Quality & CI - Skyfobs</title>
         <meta
           name="description"
           content="Quality assurance and continuous integration form the backbone of modern software delivery, catching issues early, maintaining code standards, and enabling rapid, confident deployments."
@@ -44,7 +44,7 @@ export default function QualityAndCI() {
           {
             icon: <FaRocket />,
             title: "Deploy",
-            text: "Automated pipelines and safe deployment patterns — feature flags, rollbacks, and canaries.",
+            text: "Automated pipelines and safe deployment patterns - feature flags, rollbacks, and canaries.",
           },
         ]}
       />
@@ -84,7 +84,7 @@ export default function QualityAndCI() {
           },
 
           {
-            heading: "Testing Strategies — Test Pyramid",
+            heading: "Testing Strategies - Test Pyramid",
             paragraphs: [
               "A well-balanced testing strategy includes unit tests forming the foundation, integration tests in the middle, and end-to-end tests at the top. This pyramid ensures comprehensive coverage while maintaining fast feedback loops.",
             ],

@@ -4,6 +4,8 @@ import { getAllPosts, getPostBySlug } from "../../data/blogs";
 import Link from "next/link";
 import styles from "../../styles/components/blogPost.module.scss";
 import { formatDateFriendly } from "@/utils/formatDate";
+import Button from "@/components/ui/Button";
+import { IoArrowBack } from "react-icons/io5";
 
 export async function getStaticPaths() {
   const posts = getAllPosts();
@@ -23,7 +25,7 @@ export default function BlogPost({ post }) {
   return (
     <>
       <Head>
-        <title>{post.title} — Skyfobs</title>
+        <title>{post.title} - Skyfobs</title>
         <meta name="description" content={post.excerpt} />
       </Head>
 
@@ -53,7 +55,9 @@ export default function BlogPost({ post }) {
 
             <footer className={styles.footer}>
               <Link href="/blog" className="button ghost">
-                ← Back to articles
+                <Button>
+                  <IoArrowBack /> Back to articles
+                </Button>
               </Link>
             </footer>
           </article>

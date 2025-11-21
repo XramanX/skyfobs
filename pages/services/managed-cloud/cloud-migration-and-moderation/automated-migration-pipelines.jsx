@@ -49,7 +49,7 @@ export default function AutomatedMigrationPipelines() {
   return (
     <>
       <Head>
-        <title>Automated Migration Pipelines — Skyfobs</title>
+        <title>Automated Migration Pipelines - Skyfobs</title>
         <meta
           name="description"
           content="Automated migration pipelines: continuous replication, pre-flight validation, test migrations and orchestrated cutover to migrate with minimal downtime and predictable outcomes."

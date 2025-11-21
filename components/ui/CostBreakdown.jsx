@@ -87,7 +87,7 @@ export default function CostBreakdown({ total = "$0", items = [] }) {
                       background: `linear-gradient(90deg, ${c1}, ${c2})`,
                       minWidth: pct > 0 && pct < 1 ? "1%" : undefined,
                     }}
-                    title={`${it.label} — ${it.amount} (${Math.round(pct)}%)`}
+                    title={`${it.label} - ${it.amount} (${Math.round(pct)}%)`}
                     aria-hidden
                   />
                 );

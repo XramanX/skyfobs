@@ -21,7 +21,7 @@ export default function HardenedPlatform() {
   return (
     <>
       <Head>
-        <title>Hardened Platform — Skyfobs</title>
+        <title>Hardened Platform - Skyfobs</title>
         <meta
           name="description"
           content="Hardened private cloud platforms with defense-in-depth: identity & access, encryption, network segmentation, monitoring, and continuous security management."
@@ -88,7 +88,7 @@ export default function HardenedPlatform() {
           {
             heading: "Hardened Platform",
             paragraphs: [
-              "Hardened private cloud platforms provide enterprise-grade security through defense-in-depth strategies, comprehensive access controls, and continuous security monitoring. Implementing security at every layer — from physical datacenters to application workloads — reduces attack surfaces and supports compliance requirements.",
+              "Hardened private cloud platforms provide enterprise-grade security through defense-in-depth strategies, comprehensive access controls, and continuous security monitoring. Implementing security at every layer - from physical datacenters to application workloads - reduces attack surfaces and supports compliance requirements.",
             ],
           },
 
@@ -121,7 +121,7 @@ export default function HardenedPlatform() {
           },
 
           {
-            heading: "Encryption — At Rest & In Transit",
+            heading: "Encryption - At Rest & In Transit",
             paragraphs: [
               "Encrypt data at rest (full-disk, database encryption, object storage) and in transit (TLS with strong cipher suites and perfect forward secrecy). Apply field-level and application-level encryption for sensitive data. Protect backups and snapshots with encryption and access controls to prevent exfiltration.",
             ],

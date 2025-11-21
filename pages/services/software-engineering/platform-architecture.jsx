@@ -116,7 +116,7 @@ export default function PlatformArchitecture() {
   return (
     <>
       <Head>
-        <title>Platform Architecture — Skyfobs</title>
+        <title>Platform Architecture - Skyfobs</title>
         <meta
           name="description"
           content="Platform architecture forms the foundation of modern software systems. Learn core principles, patterns, infrastructure and security considerations."

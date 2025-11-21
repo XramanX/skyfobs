@@ -11,10 +11,10 @@ export default function PrivacyPage() {
   return (
     <>
       <Head>
-        <title>Privacy Policy — Skyfobs</title>
+        <title>Privacy Policy - Skyfobs</title>
         <meta
           name="description"
-          content="Skyfobs privacy policy — how we collect, use and protect your information."
+          content="Skyfobs privacy policy - how we collect, use and protect your information."
         />
       </Head>
 
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
               We may share aggregated or anonymised data with service providers
               (analytics, hosting, email delivery). We require trusted vendors
               to handle data securely. Links to third-party sites may appear on
-              our site — we are not responsible for their practices.
+              our site - we are not responsible for their practices.
             </p>
           </section>
 

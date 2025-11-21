@@ -28,10 +28,10 @@ export default function ComplianceAndAudit() {
   return (
     <>
       <Head>
-        <title>Compliance & Audit — Skyfobs</title>
+        <title>Compliance & Audit - Skyfobs</title>
         <meta
           name="description"
-          content="Continuous compliance and audit readiness for private cloud platforms — automated evidence collection, policy-as-code, and regulatory controls (ISO, HIPAA, PCI, SOC2, GDPR)."
+          content="Continuous compliance and audit readiness for private cloud platforms - automated evidence collection, policy-as-code, and regulatory controls (ISO, HIPAA, PCI, SOC2, GDPR)."
         />
       </Head>
 
@@ -62,7 +62,7 @@ export default function ComplianceAndAudit() {
           },
 
           {
-            heading: "Regulatory Compliance — HIPAA",
+            heading: "Regulatory Compliance - HIPAA",
             paragraphs: [
               "HIPAA requires stringent protection of protected health information in healthcare environments. Controls include strong access control, encryption for data at rest and in transit, complete audit logging of PHI access, business associate agreements, and procedures for breach notification and risk assessments.",
             ],
@@ -148,7 +148,7 @@ export default function ComplianceAndAudit() {
           {
             heading: "Continuous Improvement",
             paragraphs: [
-              "Compliance is ongoing — automate controls, review policies regularly, run drills and measure posture. Track mean time to remediation for findings, reduce open findings, and continuously improve your control environment to stay audit-ready.",
+              "Compliance is ongoing - automate controls, review policies regularly, run drills and measure posture. Track mean time to remediation for findings, reduce open findings, and continuously improve your control environment to stay audit-ready.",
             ],
           },
         ]}

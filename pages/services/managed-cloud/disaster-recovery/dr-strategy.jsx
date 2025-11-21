@@ -29,7 +29,7 @@ export default function DisasterRecovery() {
     {
       icon: <FaFireAlt />,
       title: "Hot Site",
-      text: "Fully operational duplicate environment with real-time replication — near-zero RTO/RPO for mission-critical systems.",
+      text: "Fully operational duplicate environment with real-time replication - near-zero RTO/RPO for mission-critical systems.",
     },
     {
       icon: <FaCloud />,
@@ -44,7 +44,7 @@ export default function DisasterRecovery() {
     {
       icon: <FaSnowflake style={{ transform: "rotate(180deg)" }} />,
       title: "Cold Site",
-      text: "Basic infrastructure requiring full configuration at recovery time — low cost, longer RTO.",
+      text: "Basic infrastructure requiring full configuration at recovery time - low cost, longer RTO.",
     },
   ];
 
@@ -62,7 +62,7 @@ export default function DisasterRecovery() {
     {
       icon: <FaExclamationTriangle />,
       title: "Automated Rollback",
-      text: "Instant recovery if validation fails — orchestrated rollback minimizes business impact.",
+      text: "Instant recovery if validation fails - orchestrated rollback minimizes business impact.",
     },
     {
       icon: <FaUsersCog />,
@@ -74,7 +74,7 @@ export default function DisasterRecovery() {
   return (
     <>
       <Head>
-        <title>Disaster Recovery — Skyfobs</title>
+        <title>Disaster Recovery - Skyfobs</title>
         <meta
           name="description"
           content="Disaster recovery strategy and planning: RTO/RPO objectives, hot/warm/cold site patterns, cloud DR, runbooks, testing and orchestration for business continuity."
@@ -107,7 +107,7 @@ export default function DisasterRecovery() {
           {
             heading: "DR Strategy & Planning",
             paragraphs: [
-              "A robust DR strategy begins with business impact analysis to identify critical systems and the recovery objectives that matter to the business. Use RTO to define acceptable downtime and RPO to define acceptable data loss — these targets drive architecture and cost decisions.",
+              "A robust DR strategy begins with business impact analysis to identify critical systems and the recovery objectives that matter to the business. Use RTO to define acceptable downtime and RPO to define acceptable data loss - these targets drive architecture and cost decisions.",
             ],
           },
 
@@ -119,9 +119,9 @@ export default function DisasterRecovery() {
           },
 
           {
-            heading: "RTO & RPO — Tradeoffs and Choices",
+            heading: "RTO & RPO - Tradeoffs and Choices",
             paragraphs: [
-              "Lower RTO/RPO (minutes) requires active-active or hot-site architectures with synchronous replication — expensive but necessary for mission-critical systems. Higher RTO/RPO tolerances allow warm, pilot-light or backup-and-restore patterns that reduce cost while accepting longer recovery windows.",
+              "Lower RTO/RPO (minutes) requires active-active or hot-site architectures with synchronous replication - expensive but necessary for mission-critical systems. Higher RTO/RPO tolerances allow warm, pilot-light or backup-and-restore patterns that reduce cost while accepting longer recovery windows.",
             ],
           },
 

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styles from "../../styles/components/blogCard.module.scss";
 import { formatDateFriendly } from "@/utils/formatDate";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 export default function BlogCard({
   title,
@@ -31,7 +32,7 @@ export default function BlogCard({
 
       <div className={styles.row}>
         <Link href={`/blog/${slug}`} className={styles.readMore}>
-          Read article →
+          Read article <IoArrowForwardOutline />
         </Link>
 
         <div className={styles.tags}>

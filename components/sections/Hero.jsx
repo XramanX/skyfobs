@@ -117,7 +117,7 @@ export default function Hero({
       const dt = (time - lastRef.current) / 1000; // seconds
       lastRef.current = time;
 
-      // speed is in px/sec — works for both axes
+      // speed is in px/sec - works for both axes
       measureRef.current = measure();
       offsetRef.current =
         (offsetRef.current + dt * speed) % (measureRef.current || 1);

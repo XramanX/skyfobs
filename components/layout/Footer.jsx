@@ -1,8 +1,11 @@
 // components/layout/Footer.jsx
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Link from "next/link";
 import styles from "../../styles/components/footer.module.scss";
 import Image from "next/image";
+import { subscribeNewsletter } from "../../lib/api";
+import Toast from "../ui/Toast";
+import toastStyles from "../../styles/components/toast.module.scss";
 
 const CONTACT = {
   email: "contact@skyfobs.com",
@@ -13,13 +16,40 @@ const CONTACT = {
 };
 
 function FooterInner() {
-  const onNewsletterSubmit = useCallback((e) => {
+  const [state, setState] = useState({ loading: false });
+  const [toasts, setToasts] = useState([]);
+
+  const addToast = (t) => {
+    const id = Date.now() + Math.random();
+    setToasts((s) => [...s, { id, ...t }]);
+  };
+  const removeToast = (id) => setToasts((s) => s.filter((x) => x.id !== id));
+
+  const onNewsletterSubmit = useCallback(async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const email = form.elements?.email?.value ?? "";
+    const email = form.elements?.email?.value?.trim() ?? "";
+    if (!email) return;
 
-    console.log("Newsletter signup (mock):", email);
-    form.reset();
+    setState({ loading: true });
+
+    try {
+      await subscribeNewsletter({ email });
+      setState({ loading: false });
+      form.reset();
+      addToast({
+        type: "success",
+        title: "Subscribed",
+        message: "Thanks - you'll receive newsletter updates.",
+      });
+    } catch (err) {
+      setState({ loading: false });
+      addToast({
+        type: "error",
+        title: "Subscription failed",
+        message: err?.message || "Try again later.",
+      });
+    }
   }, []);
 
   return (
@@ -48,11 +78,9 @@ function FooterInner() {
               >
                 {CONTACT.email}
               </a>
-
               <a className={styles.contactLink} href={`tel:${CONTACT.phone}`}>
                 {CONTACT.phone}
               </a>
-
               <address className={styles.address}>
                 <span>{CONTACT.addressLine1}</span>
                 <span>{CONTACT.addressLine2}</span>
@@ -70,7 +98,6 @@ function FooterInner() {
               <li>
                 <Link href="/partner-program">Partner program</Link>
               </li>
-
               <li>
                 <Link href="/contact">Contact</Link>
               </li>
@@ -81,16 +108,29 @@ function FooterInner() {
             <h4 className={styles.colTitle}>Services</h4>
             <ul>
               <li>
-                <Link href="/services/managed-cloud">Managed Cloud</Link>
+                <Link href="/services/software-engineering">
+                  Software Engineering
+                </Link>
               </li>
               <li>
-                <Link href="/services/security">Cloud Security</Link>
+                <Link href="/services/performance-engineering">
+                  Performance Engineering
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/services/security">Security</Link>
               </li>
               <li>
                 <Link href="/services/ai">AI & GenAI</Link>
               </li>
               <li>
                 <Link href="/services/devops">DevOps</Link>
+              </li>
+              <li>
+                <Link href="/services/managed-cloud">
+                  Managed Cloud Solution
+                </Link>
               </li>
             </ul>
           </div>
@@ -114,8 +154,9 @@ function FooterInner() {
               <button
                 type="submit"
                 className={`${styles.button} ${styles.primary}`}
+                disabled={state.loading}
               >
-                Subscribe
+                {state.loading ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
           </div>
@@ -130,6 +171,22 @@ function FooterInner() {
             <Link href="/terms">Terms</Link>
           </div>
         </div>
+      </div>
+
+      <div
+        className={toastStyles.toastStack}
+        aria-hidden={toasts.length === 0 ? "true" : "false"}
+      >
+        {toasts.map((t) => (
+          <Toast
+            key={t.id}
+            id={t.id}
+            type={t.type}
+            title={t.title}
+            message={t.message}
+            onClose={removeToast}
+          />
+        ))}
       </div>
     </footer>
   );

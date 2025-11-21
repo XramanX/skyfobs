@@ -50,7 +50,7 @@ export default function DRTesting() {
     {
       icon: <FaChartBar />,
       title: "Analyze",
-      text: "Capture metrics, gaps and root causes — document results.",
+      text: "Capture metrics, gaps and root causes - document results.",
     },
     {
       icon: <FaSyncAlt />,
@@ -62,15 +62,15 @@ export default function DRTesting() {
   return (
     <>
       <Head>
-        <title>DR Testing & Validation — Skyfobs</title>
+        <title>DR Testing & Validation - Skyfobs</title>
         <meta
           name="description"
-          content="Disaster recovery testing: tabletop, parallel, failover and GameDay simulations — practical validation, metrics and continuous improvement to ensure readiness."
+          content="Disaster recovery testing: tabletop, parallel, failover and GameDay simulations - practical validation, metrics and continuous improvement to ensure readiness."
         />
       </Head>
 
       <HeroSection
-        title="Test & Validate — Disaster Recovery"
+        title="Test & Validate - Disaster Recovery"
         intro="Prove your recovery capabilities with repeatable DR tests: plan realistic scenarios, execute technical & business validations, analyze gaps and continuously improve."
       />
 
@@ -88,7 +88,7 @@ export default function DRTesting() {
       <ContentSection
         sections={[
           {
-            heading: "Test & Validate — Overview",
+            heading: "Test & Validate - Overview",
             paragraphs: [
               "Regular DR testing validates recovery capabilities, identifies gaps, and builds team confidence. Use a mix of tabletop, parallel, failover and GameDay tests to cover people, processes and technology.",
             ],
@@ -97,19 +97,19 @@ export default function DRTesting() {
           {
             heading: "DR Testing Methodologies",
             paragraphs: [
-              "Tabletop Exercises — low-risk walkthroughs that uncover procedural gaps and clarify responsibilities without changing production state.",
-              "Parallel Testing — start DR systems side-by-side with production to validate boot, integration and data replication while avoiding traffic switchovers.",
-              "Failover Testing — full traffic cutover tests the entire recovery path and failback procedures; highest confidence but requires careful scheduling and stakeholder coordination.",
-              "GameDay Simulations — realistic, surprise scenarios or chaos experiments that stress people and systems together to surface operational weaknesses.",
+              "Tabletop Exercises - low-risk walkthroughs that uncover procedural gaps and clarify responsibilities without changing production state.",
+              "Parallel Testing - start DR systems side-by-side with production to validate boot, integration and data replication while avoiding traffic switchovers.",
+              "Failover Testing - full traffic cutover tests the entire recovery path and failback procedures; highest confidence but requires careful scheduling and stakeholder coordination.",
+              "GameDay Simulations - realistic, surprise scenarios or chaos experiments that stress people and systems together to surface operational weaknesses.",
             ],
           },
 
           {
             heading: "Validation Procedures",
             paragraphs: [
-              "Technical Validation — confirm infrastructure provisioning, networking, service startup sequencing, integrations, performance and security posture in the DR environment.",
-              "Data Integrity Validation — verify record counts, checksums, point-in-time correctness and representative business transactions to ensure recovered data is usable.",
-              "User Acceptance Testing — run critical business workflows and reports to confirm the recovery meets actual user needs beyond technical checks.",
+              "Technical Validation - confirm infrastructure provisioning, networking, service startup sequencing, integrations, performance and security posture in the DR environment.",
+              "Data Integrity Validation - verify record counts, checksums, point-in-time correctness and representative business transactions to ensure recovered data is usable.",
+              "User Acceptance Testing - run critical business workflows and reports to confirm the recovery meets actual user needs beyond technical checks.",
             ],
           },
 
@@ -151,7 +151,7 @@ export default function DRTesting() {
           {
             heading: "Metrics & Maturity",
             paragraphs: [
-              "Track test success rate, RTO achievement, RPO compliance, test frequency and automation coverage. Use a maturity model — tabletop → parallel → failover → automated continuous testing — to measure progress.",
+              "Track test success rate, RTO achievement, RPO compliance, test frequency and automation coverage. Use a maturity model - tabletop → parallel → failover → automated continuous testing - to measure progress.",
             ],
           },
 

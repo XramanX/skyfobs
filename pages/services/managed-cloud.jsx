@@ -36,7 +36,7 @@ const CONTENT = {
   migration: {
     eyebrow: "Migration & Modernization",
     title: "Move to cloud safely and modernize for scale",
-    lead: "We assess, replatform and migrate applications with minimal downtime. Our approach balances risk, cost and business continuity — from lift-and-shift to full refactor and cloud-native transformation.",
+    lead: "We assess, replatform and migrate applications with minimal downtime. Our approach balances risk, cost and business continuity - from lift-and-shift to full refactor and cloud-native transformation.",
     bullets: [
       "Comprehensive migration assessment & runbook",
       "Strangling monoliths into microservices / containers",
@@ -233,7 +233,7 @@ export default function ManagedCloudPage() {
   return (
     <>
       <Head>
-        <title>Managed Cloud Solutions — Skyfobs</title>
+        <title>Managed Cloud Solutions - Skyfobs</title>
       </Head>
 
       <main>

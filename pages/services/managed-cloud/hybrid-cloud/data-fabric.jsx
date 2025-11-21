@@ -65,16 +65,16 @@ export default function DataFabric() {
   return (
     <>
       <Head>
-        <title>Data Fabric — Skyfobs</title>
+        <title>Data Fabric - Skyfobs</title>
         <meta
           name="description"
-          content="Data fabric delivers unified data access, metadata-driven automation, and governance across hybrid cloud environments — enabling analytics, ML and operational use cases without heavy data movement."
+          content="Data fabric delivers unified data access, metadata-driven automation, and governance across hybrid cloud environments - enabling analytics, ML and operational use cases without heavy data movement."
         />
       </Head>
 
       <HeroSection
         title="Data Fabric"
-        intro="Create a unified data access layer across hybrid cloud and on-prem systems — metadata-driven, secure, and optimized for analytics and ML."
+        intro="Create a unified data access layer across hybrid cloud and on-prem systems - metadata-driven, secure, and optimized for analytics and ML."
       />
 
       <div className="container progress-container" style={{ gap: 12 }}>
@@ -116,7 +116,7 @@ export default function DataFabric() {
           {
             heading: "Data Fabric",
             paragraphs: [
-              "Data fabric creates an intelligent, metadata-driven layer that unifies access to databases, data lakes, warehouses, file systems, cloud storage and APIs — without forcing full consolidation. It enables development and analytics teams to find, access and use data where it lives while governance and policies are applied consistently.",
+              "Data fabric creates an intelligent, metadata-driven layer that unifies access to databases, data lakes, warehouses, file systems, cloud storage and APIs - without forcing full consolidation. It enables development and analytics teams to find, access and use data where it lives while governance and policies are applied consistently.",
             ],
           },
 

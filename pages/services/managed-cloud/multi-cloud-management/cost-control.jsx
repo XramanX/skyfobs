@@ -32,29 +32,29 @@ export default function CostAndTaggingControls() {
     {
       icon: <FaTags />,
       title: "Business Tags",
-      text: "Cost center, project, owner — enable accurate chargeback and showback.",
+      text: "Cost center, project, owner - enable accurate chargeback and showback.",
     },
     {
       icon: <FaCog />,
       title: "Technical Tags",
-      text: "Environment, application, component — support automation & operations.",
+      text: "Environment, application, component - support automation & operations.",
     },
     {
       icon: <FaLock />,
       title: "Security Tags",
-      text: "Classification, compliance, data sensitivity — drive data protection controls.",
+      text: "Classification, compliance, data sensitivity - drive data protection controls.",
     },
     {
       icon: <FaSyncAlt />,
       title: "Automation Tags",
-      text: "Backup policy, scaling rules, lifecycle — enable automated policies and workflows.",
+      text: "Backup policy, scaling rules, lifecycle - enable automated policies and workflows.",
     },
   ];
 
   return (
     <>
       <Head>
-        <title>Cost & Tagging Controls — Skyfobs</title>
+        <title>Cost & Tagging Controls - Skyfobs</title>
         <meta
           name="description"
           content="Cost and tagging controls for multi-cloud: tagging strategy, enforcement, cost allocation, FinOps practices and automated optimization."
@@ -147,7 +147,7 @@ export default function CostAndTaggingControls() {
           {
             heading: "Sustainability & Green Cloud",
             paragraphs: [
-              "Optimize for environmental impact by reducing wasted compute, enabling carbon-aware scheduling and selecting regions with lower carbon intensity—cost savings often align with sustainability gains.",
+              "Optimize for environmental impact by reducing wasted compute, enabling carbon-aware scheduling and selecting regions with lower carbon intensity-cost savings often align with sustainability gains.",
             ],
           },
 

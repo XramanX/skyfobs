@@ -1,4 +1,3 @@
-// components/layout/NavDropdown.jsx
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import styles from "../../styles/components/navdropdown.module.scss";
@@ -63,6 +62,9 @@ function NavDropdownInner({ title, items }) {
             href={it.href || "#"}
             className={styles.item}
             role="menuitem"
+            onClick={() => {
+              setOpen(false);
+            }}
           >
             {it.label}
           </Link>

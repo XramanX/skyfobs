@@ -18,6 +18,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const lastScroll = useRef(0);
   const rafRef = useRef(null);
+  const mobileNavRef = useRef(null);
 
   const nav = useMemo(() => NAV, []);
 
@@ -26,6 +27,15 @@ export default function Header() {
     router.events?.on?.("routeChangeStart", handleRoute);
     return () => router.events?.off?.("routeChangeStart", handleRoute);
   }, [router.events]);
+
+  const closeMobileNav = useCallback(() => {
+    setOpenMobile(false);
+    const root = mobileNavRef.current;
+    if (root) {
+      const openDetails = root.querySelectorAll("details[open]");
+      openDetails.forEach((d) => d.removeAttribute("open"));
+    }
+  }, []);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -69,7 +79,12 @@ export default function Header() {
         <div className={styles.headerContainer}>
           <div className={styles.inner}>
             <div className={styles.left}>
-              <Link href="/" className={styles.logo} aria-label="Home">
+              <Link
+                href="/"
+                className={styles.logo}
+                aria-label="Home"
+                onClick={closeMobileNav}
+              >
                 <Image
                   src="/skyfobs.png"
                   alt="Skyfobs logo"
@@ -87,7 +102,11 @@ export default function Header() {
                     {n.items ? (
                       <NavDropdown title={n.label} items={n.items} />
                     ) : (
-                      <Link href={n.href || "#"} className={styles.navLink}>
+                      <Link
+                        href={n.href || "#"}
+                        className={styles.navLink}
+                        onClick={closeMobileNav}
+                      >
                         {n.label}
                       </Link>
                     )}
@@ -97,7 +116,11 @@ export default function Header() {
             </nav>
 
             <div className={styles.right}>
-              <Link href="/contact" className={styles.contactBtn}>
+              <Link
+                href="/contact"
+                className={styles.contactBtn}
+                onClick={closeMobileNav}
+              >
                 Contact
               </Link>
 
@@ -126,20 +149,28 @@ export default function Header() {
                     <ul>
                       {n.items.map((it, j) => (
                         <li key={j}>
-                          <Link href={it.href || "#"}>{it.label}</Link>
+                          <Link href={it.href || "#"} onClick={closeMobileNav}>
+                            {it.label}
+                          </Link>
                         </li>
                       ))}
                     </ul>
                   </details>
                 ) : (
-                  <Link href={n.href || "#"}>{n.label}</Link>
+                  <Link href={n.href || "#"} onClick={closeMobileNav}>
+                    {n.label}
+                  </Link>
                 )}
               </li>
             ))}
           </ul>
 
           <div className={styles.mobileUtils}>
-            <Link href="/contact" className={styles.contactBtn}>
+            <Link
+              href="/contact"
+              className={styles.contactBtn}
+              onClick={closeMobileNav}
+            >
               Contact
             </Link>
           </div>

@@ -4,6 +4,8 @@ import { getAllPosts } from "../../data/blogs";
 import BlogCard from "../../components/common/BlogCard";
 import styles from "../../styles/components/blogIndex.module.scss";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
+import { IoArrowBack } from "react-icons/io5";
 
 export async function getStaticProps() {
   const posts = getAllPosts();
@@ -14,7 +16,7 @@ export default function BlogIndex({ posts }) {
   return (
     <>
       <Head>
-        <title>Blog — Skyfobs</title>
+        <title>Blog - Skyfobs</title>
       </Head>
 
       <main className={styles.page}>
@@ -43,7 +45,9 @@ export default function BlogIndex({ posts }) {
 
           <div className={styles.moreRow}>
             <Link href="/" className="button ghost">
-              ← Back to home
+              <Button>
+                <IoArrowBack /> Back to home
+              </Button>
             </Link>
           </div>
         </div>

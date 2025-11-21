@@ -10,10 +10,10 @@ export default function TermsPage() {
   return (
     <>
       <Head>
-        <title>Terms of Service — Skyfobs</title>
+        <title>Terms of Service - Skyfobs</title>
         <meta
           name="description"
-          content="Terms of service for Skyfobs — rules and disclaimers for using our website and services."
+          content="Terms of service for Skyfobs - rules and disclaimers for using our website and services."
         />
       </Head>
 
@@ -56,7 +56,7 @@ export default function TermsPage() {
             <h2>4. Intellectual property</h2>
             <p>
               The site content (text, images, code snippets, logos) is owned by
-              Skyfobs or licensed—you may not reuse it without permission.
+              Skyfobs or licensed-you may not reuse it without permission.
             </p>
           </section>
 

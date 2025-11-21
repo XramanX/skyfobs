@@ -44,7 +44,7 @@ export default function AssessmentStrategy() {
   return (
     <>
       <Head>
-        <title>Assessment & Strategy — Cloud Migration — Skyfobs</title>
+        <title>Assessment & Strategy - Cloud Migration - Skyfobs</title>
         <meta
           name="description"
           content="Discovery, portfolio analysis and migration strategy: choose the right migration approach (rehost, replatform, refactor, repurchase, retain, retire) and build a business-backed roadmap."
@@ -89,7 +89,7 @@ export default function AssessmentStrategy() {
           {
             heading: "Application Portfolio Analysis",
             paragraphs: [
-              "Evaluate applications across technical complexity, business value, licensing and migration readiness. Categorize applications into migration waves—start with high-value, low-complexity apps to deliver quick wins while building migration experience for the team.",
+              "Evaluate applications across technical complexity, business value, licensing and migration readiness. Categorize applications into migration waves-start with high-value, low-complexity apps to deliver quick wins while building migration experience for the team.",
             ],
           },
 
@@ -108,9 +108,9 @@ export default function AssessmentStrategy() {
           },
 
           {
-            heading: "Migration Strategy Selection — The 6 R's",
+            heading: "Migration Strategy Selection - The 6 R's",
             paragraphs: [
-              "Use the six (or more) migration patterns—Rehost (lift-and-shift), Replatform (lift & optimize), Refactor (re-architect), Repurchase (SaaS), Retain (stay on-prem), and Retire (decommission)—to select the appropriate approach per application based on cost, risk and strategic value.",
+              "Use the six (or more) migration patterns-Rehost (lift-and-shift), Replatform (lift & optimize), Refactor (re-architect), Repurchase (SaaS), Retain (stay on-prem), and Retire (decommission)-to select the appropriate approach per application based on cost, risk and strategic value.",
             ],
           },
 
@@ -124,7 +124,7 @@ export default function AssessmentStrategy() {
           {
             heading: "Replatform & Refactor",
             paragraphs: [
-              "Replatforming applies targeted optimizations (managed DBs, autoscaling) without deep code changes. Refactoring re-architects apps for cloud-native patterns—microservices, serverless, managed services—delivering the biggest long-term benefits but requiring more investment.",
+              "Replatforming applies targeted optimizations (managed DBs, autoscaling) without deep code changes. Refactoring re-architects apps for cloud-native patterns-microservices, serverless, managed services-delivering the biggest long-term benefits but requiring more investment.",
             ],
           },
 

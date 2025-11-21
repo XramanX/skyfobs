@@ -34,33 +34,33 @@ export default function PerformanceOperations() {
   return (
     <>
       <Head>
-        <title>Performance Operations — Skyfobs</title>
+        <title>Performance Operations - Skyfobs</title>
         <meta
           name="description"
-          content="Integrate performance engineering into daily operations — monitor, analyze, optimize, and validate performance continuously to maintain exceptional user experiences."
+          content="Integrate performance engineering into daily operations - monitor, analyze, optimize, and validate performance continuously to maintain exceptional user experiences."
         />
       </Head>
       <HeroSection
         title="Performance Operations"
-        intro="Integrate performance engineering into daily operations — monitor, analyze, optimize, and validate performance continuously to maintain exceptional user experiences."
+        intro="Integrate performance engineering into daily operations - monitor, analyze, optimize, and validate performance continuously to maintain exceptional user experiences."
       />
       <div className="container progress-container">
         <Progress
-          label={`Page Load Time — ${metrics.pageLoadMs / 1000}s`}
+          label={`Page Load Time - ${metrics.pageLoadMs / 1000}s`}
           value={pct(metrics.pageLoadMs, budgets.pageLoadMs)}
           icon={<FaClock />}
           size="md"
         />
 
         <Progress
-          label={`API Response — ${metrics.apiMs}ms`}
+          label={`API Response - ${metrics.apiMs}ms`}
           value={pct(metrics.apiMs, budgets.apiMs)}
           icon={<FaServer />}
           size="md"
         />
 
         <Progress
-          label={`Database Query — ${metrics.dbMs}ms`}
+          label={`Database Query - ${metrics.dbMs}ms`}
           value={pct(metrics.dbMs, budgets.dbMs)}
           icon={<FaDatabase />}
           size="md"

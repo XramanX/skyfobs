@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import {
   FaHandshake,
   FaTrophy,
   FaNetworkWired,
   FaRegLightbulb,
-  FaChevronDown,
   FaCheck,
 } from "react-icons/fa";
 import Button from "../components/ui/Button";
 import styles from "../styles/components/partners.module.scss";
-import Link from "next/link";
+import FAQItem from "@/components/common/FAQItem";
+import { FaRegFileAlt, FaServer, FaHeadset } from "react-icons/fa";
 
 const TIERS = [
   {
@@ -20,16 +21,17 @@ const TIERS = [
     price: "Free",
     lead: "Referral & basic integrations",
     benefits: [
-      "Listing on partner directory",
-      "Sales enablement kit",
-      "Email support",
-      "Co-marketing playbook",
+      "Listing on Partner Directory",
+      "Sales Enablement Kit",
+      "Email Support",
+      "Co-marketing Playbook",
     ],
+    short: "Foundational relationship via referral and basic integrations.",
   },
   {
     id: "advanced",
     name: "Advanced",
-    price: "$2,500 / yr",
+    price: "$2,999 / Month",
     lead: "Technical enablement & joint go-to-market",
     benefits: [
       "API credits & sandbox",
@@ -37,6 +39,8 @@ const TIERS = [
       "Joint case studies",
       "Quarterly technical review",
     ],
+    short: "Enhanced support and resources for technical partners.",
+    featured: true,
   },
   {
     id: "strategic",
@@ -49,6 +53,7 @@ const TIERS = [
       "Shared incentives & SLAs",
       "Marketing co-investment",
     ],
+    short: "Exclusive, deeply-aligned revenue-sharing partnerships.",
   },
 ];
 
@@ -67,20 +72,19 @@ const FAQS = [
   },
   {
     q: "Do you provide technical training?",
-    a: "Yes — we provide workshops, sandbox access and co-delivery support depending on tier.",
+    a: "Yes - we provide workshops, sandbox access and co-delivery support depending on tier.",
   },
 ];
-
 export default function PartnersPage() {
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   return (
     <>
       <Head>
-        <title>Partner Program — Skyfobs</title>
+        <title>Partner Program - Skyfobs</title>
         <meta
           name="description"
-          content="Join Skyfobs Partner Program — referral, delivery and strategic partnership tracks for consultancies, MSPs and ISVs."
+          content="Join Skyfobs Partner Program - referral, delivery and strategic partnership tracks for consultancies, MSPs and ISVs."
         />
       </Head>
 
@@ -95,7 +99,7 @@ export default function PartnersPage() {
                 </div>
 
                 <h1 className={styles.title}>
-                  Partner with Skyfobs — grow revenue, speed delivery
+                  Partner with Skyfobs - grow revenue, speed delivery
                 </h1>
 
                 <p className={styles.lead}>
@@ -109,22 +113,27 @@ export default function PartnersPage() {
                   <Link href="/contact">
                     <Button>Become a partner</Button>
                   </Link>
+                  <Link href="/contact">
+                    <Button variant="ghost">Talk to partner team</Button>
+                  </Link>
                 </div>
               </div>
 
               <div className={styles.heroVisual} aria-hidden>
-                <Image
-                  src="/partner.svg"
-                  alt=""
-                  width={520}
-                  height={340}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    objectFit: "contain",
-                  }}
-                  priority={false}
-                />
+                <div className={styles.heroCard}>
+                  <Image
+                    src="/partner.svg"
+                    alt=""
+                    width={520}
+                    height={340}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "contain",
+                    }}
+                    priority={false}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -137,78 +146,95 @@ export default function PartnersPage() {
                 <div className={styles.iconWrap}>
                   <FaRegLightbulb />
                 </div>
-                <h3>Accelerate delivery</h3>
-                <p>
-                  Use our playbooks, IaC modules and runbooks to shorten
-                  delivery time and reduce risk in migrations and platform work.
-                </p>
+                <div>
+                  <h3>Accelerate delivery</h3>
+                  <p className={styles.small}>
+                    Playbooks, IaC and runbooks to shorten delivery and reduce
+                    risk.
+                  </p>
+                </div>
               </div>
 
               <div className={styles.reason}>
                 <div className={styles.iconWrap}>
                   <FaNetworkWired />
                 </div>
-                <h3>Technical enablement</h3>
-                <p>
-                  Training, sandbox credits and architecture reviews to help
-                  your engineers win and deliver projects.
-                </p>
+                <div>
+                  <h3>Technical enablement</h3>
+                  <p className={styles.small}>
+                    Sandbox credits, training and architecture reviews.
+                  </p>
+                </div>
               </div>
 
               <div className={styles.reason}>
                 <div className={styles.iconWrap}>
                   <FaTrophy />
                 </div>
-                <h3>Go-to-market</h3>
-                <p>
-                  Co-marketing, joint case studies and revenue incentives so
-                  partnerships scale commercial value for both sides.
-                </p>
+                <div>
+                  <h3>Go-to-market</h3>
+                  <p className={styles.small}>
+                    Co-marketing, joint case studies and revenue incentives.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* TIERS */}
         <section className={styles.tiers} id="tiers">
           <div className="container">
             <h2 className={styles.sectionTitle}>Program tiers</h2>
             <p className={styles.sectionLead}>
-              Pick a track that matches your business model — refer, deliver, or
-              co-engineer with us.
+              Choose the track that fits your goals - start with referral-based
+              engagement, add technical enablement, or pursue deep strategic
+              collaboration.
             </p>
 
             <div className={styles.tierGrid}>
               {TIERS.map((t) => (
-                <div key={t.id} className={styles.tierCard}>
+                <div
+                  key={t.id}
+                  className={`${styles.tierCard} ${
+                    t.featured ? styles.featured : ""
+                  }`}
+                  id={`${t.id}-card`}
+                >
+                  {t.featured && (
+                    <div className={styles.ribbon}>Most popular</div>
+                  )}
                   <div className={styles.tierTop}>
                     <h3 className={styles.tierName}>{t.name}</h3>
-                    <div className={styles.tierPrice}>{t.price}</div>
+                    <div className={styles.priceWrap}>
+                      <div className={styles.tierPrice}>{t.price}</div>
+                      {/* <div className={styles.priceBadge}>
+                        {t.price === "Free" ? "Start" : "Billed annually"}
+                      </div> */}
+                    </div>
                   </div>
 
                   <p className={styles.tierLead}>{t.lead}</p>
+                  <p className={styles.tierShort}>{t.short}</p>
 
                   <ul className={styles.tierBenefits}>
                     {t.benefits.map((b, i) => (
-                      <li key={i}>
-                        <FaCheck className={styles.benefitIcon} />
+                      <li key={i} className={styles.featureRow}>
+                        <span className={styles.featureIcon}>
+                          <FaCheck />
+                        </span>
                         <span>{b}</span>
                       </li>
                     ))}
                   </ul>
 
                   <div className={styles.tierCtas}>
-                    <Button onClick={() => (window.location.href = "/contact")}>
-                      Apply now
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      onClick={() =>
-                        (window.location.href = `/partners#${t.id}-details`)
-                      }
-                    >
-                      Learn more
-                    </Button>
+                    <Link href="/contact">
+                      <Button>Apply now</Button>
+                    </Link>
+
+                    <Link href={`/partners/${t.id}-details`}>
+                      <Button variant="ghost">Learn more</Button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -216,16 +242,15 @@ export default function PartnersPage() {
           </div>
         </section>
 
-        {/* RESOURCES & REQUIREMENTS */}
         <section className={styles.resources}>
           <div className="container">
             <div className={styles.resourcesInner}>
-              <div className={styles.resourcesText}>
-                <h2>Partner resources</h2>
-                <p>
+              <div>
+                <h2 className={styles.sectionTitle}>Partner resources</h2>
+                <p className={styles.sectionLead}>
                   Partners receive sales materials, reference architectures, IaC
-                  modules, and access to a technical sandbox. We also host
-                  quarterly enablement sessions and partner-only hackathons.
+                  modules, and technical sandbox access. We also host quarterly
+                  enablement sessions and partner-only hackathons.
                 </p>
 
                 <ul className={styles.reqList}>
@@ -236,61 +261,63 @@ export default function PartnersPage() {
               </div>
 
               <div className={styles.resourcesCards}>
-                <div className={styles.resourceCard}>
-                  <h4>Co-marketing</h4>
-                  <p>Templates, joint webinars and campaign support.</p>
-                </div>
-                <div className={styles.resourceCard}>
-                  <h4>Technical sandbox</h4>
-                  <p>Preconfigured environments for demos and testing.</p>
-                </div>
-                <div className={styles.resourceCard}>
-                  <h4>Priority support</h4>
-                  <p>
-                    Faster SLA and direct partner manager for Advanced &
-                    Strategic tiers.
-                  </p>
-                </div>
+                <article className={styles.resourceCard}>
+                  <div className={styles.resourceIcon}>
+                    <FaRegFileAlt />
+                  </div>
+                  <div>
+                    <h4>Co-marketing</h4>
+                    <p>Templates, joint webinars and campaign support.</p>
+                  </div>
+                </article>
+
+                <article className={styles.resourceCard}>
+                  <div className={styles.resourceIcon}>
+                    <FaServer />
+                  </div>
+                  <div>
+                    <h4>Technical sandbox</h4>
+                    <p>Preconfigured environments for demos and testing.</p>
+                  </div>
+                </article>
+
+                <article className={styles.resourceCard}>
+                  <div className={styles.resourceIcon}>
+                    <FaHeadset />
+                  </div>
+                  <div>
+                    <h4>Priority support</h4>
+                    <p>
+                      Faster SLA and direct partner manager for Advanced &
+                      Strategic tiers.
+                    </p>
+                  </div>
+                </article>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
         <section className={styles.faqs}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Frequently asked</h2>
 
             <div className={styles.faqList}>
               {FAQS.map((f, i) => (
-                <details
+                <FAQItem
                   key={i}
-                  className={styles.faqItem}
-                  onToggle={(e) => {
-                    if (e.target.open) {
-                      // close others
-                      const others = Array.from(
-                        e.target.parentElement.querySelectorAll("details")
-                      ).filter((d) => d !== e.target);
-                      others.forEach((d) => (d.open = false));
-                    }
-                  }}
-                >
-                  <summary>
-                    <span>{f.q}</span>
-                    <FaChevronDown className={styles.chev} />
-                  </summary>
-
-                  <div className={styles.answer}>
-                    <p>{f.a}</p>
-                  </div>
-                </details>
+                  q={f.q}
+                  a={f.a}
+                  open={openFaqIndex === i}
+                  onToggle={() =>
+                    setOpenFaqIndex((prev) => (prev === i ? null : i))
+                  }
+                />
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
         <section className={styles.ctaStrip}>
           <div className="container">
             <div className={styles.ctaInner}>
@@ -303,9 +330,9 @@ export default function PartnersPage() {
               </div>
 
               <div>
-                <Button onClick={() => (window.location.href = "/contact")}>
-                  Apply now
-                </Button>
+                <Link href="/contact">
+                  <Button>Apply now</Button>
+                </Link>
               </div>
             </div>
           </div>

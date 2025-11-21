@@ -25,7 +25,7 @@ export default function PlatformGovernance() {
   return (
     <>
       <Head>
-        <title>Platform Governance — Skyfobs</title>
+        <title>Platform Governance - Skyfobs</title>
         <meta
           name="description"
           content="Platform governance: policy-as-code, unified access control, automated compliance and audit across multi-cloud environments (AWS, Azure, GCP)."
@@ -34,7 +34,7 @@ export default function PlatformGovernance() {
 
       <HeroSection
         title="Platform Governance"
-        intro="Policy-driven governance, unified access control, and continuous compliance across multi-cloud environments — enforce guardrails without slowing delivery."
+        intro="Policy-driven governance, unified access control, and continuous compliance across multi-cloud environments - enforce guardrails without slowing delivery."
       />
 
       <IconFeatureGrid
@@ -85,7 +85,7 @@ export default function PlatformGovernance() {
       <ContentSection
         sections={[
           {
-            heading: "Platform Governance — Overview",
+            heading: "Platform Governance - Overview",
             paragraphs: [
               "Platform governance establishes policies, controls and processes to ensure secure, compliant, and consistent multi-cloud operations. It centralizes guardrails while enabling teams to move fast under well-defined rules.",
             ],

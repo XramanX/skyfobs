@@ -1,21 +1,75 @@
+// pages/contact.jsx
 import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/components/contact.module.scss";
-import { FiMail, FiPhone, FiMapPin, FiArrowRight } from "react-icons/fi";
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiArrowRight,
+  FiCheckCircle,
+} from "react-icons/fi";
+import { sendContact } from "../lib/api";
+import Toast from "../components/ui/Toast";
+import toastStyles from "../styles/components/toast.module.scss";
 
 export default function ContactPage() {
-  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    contact: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: "",
+  });
+  const [toasts, setToasts] = useState([]);
 
-  const handleSubmit = (e) => {
+  const addToast = (t) => {
+    const id = Date.now() + Math.random();
+    setToasts((s) => [...s, { id, ...t }]);
+  };
+  const removeToast = (id) => setToasts((s) => s.filter((x) => x.id !== id));
+
+  const onChange = (e) =>
+    setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setStatus({ loading: true, success: false, error: "" });
+
+    try {
+      await sendContact({
+        name: form.name.trim(),
+        email: form.email.trim(),
+        contact: form.contact.trim(),
+        message: form.message.trim(),
+      });
+
+      setStatus({ loading: false, success: true, error: "" });
+      setForm({ name: "", email: "", contact: "", message: "" });
+
+      addToast({
+        type: "success",
+        title: "Message sent",
+        message: "Thanks - we’ll reply within 24 hours.",
+      });
+
+      setTimeout(() => setStatus((s) => ({ ...s, success: false })), 2800);
+    } catch (err) {
+      // console.error(err);
+      const message = err?.message || "Failed to send message";
+      setStatus({ loading: false, success: false, error: message });
+      addToast({ type: "error", title: "Send failed", message });
+    }
   };
 
   return (
     <>
       <Head>
-        <title>Contact Us — Skyfobs</title>
+        <title>Contact Us - Skyfobs</title>
       </Head>
 
       <main className={styles.page}>
@@ -43,17 +97,18 @@ export default function ContactPage() {
                 <div className={styles.infoList}>
                   <div className={styles.infoItem}>
                     <FiMail />
-                    <span>support@skyfobs.com</span>
+                    <span>contact@skyfobs.com</span>
                   </div>
-
                   <div className={styles.infoItem}>
                     <FiPhone />
                     <span>+971556551387</span>
                   </div>
-
                   <div className={styles.infoItem}>
                     <FiMapPin />
-                    <span>Business Bay, Dubai</span>
+                    <span>
+                      Skyfobs Nextgen Cloud Service LLC 4201-01, Churchill
+                      Executive Tower Business Bay, Dubai
+                    </span>
                   </div>
                 </div>
 
@@ -62,31 +117,88 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* RIGHT FORM */}
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.field}>
                   <label>Your Name</label>
-                  <input type="text" required placeholder="John Doe" />
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={onChange}
+                    type="text"
+                    required
+                    placeholder="John Doe"
+                  />
                 </div>
 
                 <div className={styles.field}>
                   <label>Email Address</label>
-                  <input type="email" required placeholder="you@example.com" />
+                  <input
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
+                    type="email"
+                    required
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <div className={styles.field}>
+                  <label>Contact (optional)</label>
+                  <input
+                    name="contact"
+                    value={form.contact}
+                    onChange={onChange}
+                    type="tel"
+                    placeholder="+91 1234 567 890"
+                  />
                 </div>
 
                 <div className={styles.field}>
                   <label>Message</label>
-                  <textarea rows={5} required placeholder="How can we help?" />
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={onChange}
+                    rows={5}
+                    required
+                    placeholder="How can we help?"
+                  />
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  <span>{sent ? "Message Sent!" : "Send Message"}</span>
-                  {!sent && <FiArrowRight />}
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={status.loading}
+                >
+                  <span>{status.loading ? "Sending..." : "Send Message"}</span>
+                  {!status.loading && <FiArrowRight />}
                 </button>
+
+                {status.error && (
+                  <div className={styles.error} role="alert">
+                    {status.error}
+                  </div>
+                )}
               </form>
             </div>
           </div>
         </section>
+
+        <div
+          className={toastStyles.toastStack}
+          aria-hidden={toasts.length === 0 ? "true" : "false"}
+        >
+          {toasts.map((t) => (
+            <Toast
+              key={t.id}
+              id={t.id}
+              type={t.type}
+              title={t.title}
+              message={t.message}
+              onClose={removeToast}
+            />
+          ))}
+        </div>
       </main>
     </>
   );

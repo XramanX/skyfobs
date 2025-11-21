@@ -1,9 +1,10 @@
-// components/sections/HomeBlogs.jsx
 import React from "react";
 import Link from "next/link";
 import { getLatest } from "../../data/blogs";
 import BlogCard from "../common/BlogCard";
 import styles from "../../styles/components/homeBlogs.module.scss";
+import Button from "../ui/Button";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 export default function HomeBlogs() {
   const posts = getLatest(3);
@@ -35,7 +36,9 @@ export default function HomeBlogs() {
 
         <div className={styles.row}>
           <Link href="/blog" className="button ghost">
-            See all articles →
+            <Button>
+              See all articles <IoArrowForwardOutline />
+            </Button>
           </Link>
         </div>
       </div>

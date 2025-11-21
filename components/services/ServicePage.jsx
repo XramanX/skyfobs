@@ -22,7 +22,7 @@ export default function ServicePage({
   return (
     <>
       <Head>
-        <title>{title} — Skyfobs</title>
+        <title>{title} - Skyfobs</title>
         <meta name="description" content={lead} />
       </Head>
 

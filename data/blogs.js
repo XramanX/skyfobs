@@ -11,7 +11,7 @@ const POSTS = [
       "<p>Migrate your infrastructure seamlessly from any cloud or data center to any destination with secure, scalable, and hassle-free cloud migration services.</p>",
     contentHtml: `
       <h2>Why choose an engineered migration</h2>
-      <p>Successful migrations focus on people, process and automation — not just lift-and-shift. We emphasise discovery, runbook-driven cutovers and repeatable IaC pipelines.</p>
+      <p>Successful migrations focus on people, process and automation - not just lift-and-shift. We emphasise discovery, runbook-driven cutovers and repeatable IaC pipelines.</p>
 
       <h3>Three-step approach</h3>
       <ol>
@@ -22,7 +22,7 @@ const POSTS = [
 
       <h3>Common patterns</h3>
       <ul>
-        <li><strong>Rehost (lift & shift):</strong> Fastest but often temporary — used for low-risk services.</li>
+        <li><strong>Rehost (lift & shift):</strong> Fastest but often temporary - used for low-risk services.</li>
         <li><strong>Replatform:</strong> Small changes to use managed services (databases, caches).</li>
         <li><strong>Refactor:</strong> Cloud-native redesign (containers, serverless) for long-term velocity and cost benefits.</li>
       </ul>
@@ -48,7 +48,7 @@ const POSTS = [
     excerpt:
       "Designing observability that scales: traces, metrics, logs and runbooks that help teams move fast while staying safe.",
     heroHtml:
-      "<p>Observability is the foundation of reliable cloud platforms — here’s how to design it so it stays useful at scale.</p>",
+      "<p>Observability is the foundation of reliable cloud platforms - here’s how to design it so it stays useful at scale.</p>",
     contentHtml: `
       <h2>A practical observability strategy</h2>
       <p>Collect the right signals and make sure they help engineers answer business questions fast. Observability is useful only when it reduces time-to-meaning.</p>
@@ -98,7 +98,7 @@ const POSTS = [
       <h3>Response & readiness</h3>
       <p>Create playbooks for common incidents (compromise, data exposure) and run quarterly tabletop exercises with engineering and leadership.</p>
 
-      <p>Security maturity is a combination of automation, policy and ongoing practice — not a one-off project.</p>
+      <p>Security maturity is a combination of automation, policy and ongoing practice - not a one-off project.</p>
     `,
   },
 

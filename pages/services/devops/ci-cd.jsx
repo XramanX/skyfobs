@@ -27,10 +27,10 @@ export default function FastCICD() {
   return (
     <>
       <Head>
-        <title>Fast CI/CD — Skyfobs</title>
+        <title>Fast CI/CD - Skyfobs</title>
         <meta
           name="description"
-          content="Design and run fast, reliable CI/CD pipelines — optimize builds and tests, enable progressive delivery, and measure pipeline performance to ship safely at high velocity."
+          content="Design and run fast, reliable CI/CD pipelines - optimize builds and tests, enable progressive delivery, and measure pipeline performance to ship safely at high velocity."
         />
       </Head>
 

@@ -26,7 +26,7 @@ export default function FeatureStores() {
   return (
     <>
       <Head>
-        <title>Feature Stores & Data Stores — Skyfobs</title>
+        <title>Feature Stores & Data Stores - Skyfobs</title>
         <meta
           name="description"
           content="Feature stores centralize feature engineering, storage and serving to ensure training-serving parity, versioned features, low-latency inference and strong governance."
@@ -35,7 +35,7 @@ export default function FeatureStores() {
 
       <HeroSection
         title="Feature Stores & Data Stores"
-        intro="Manage features as versioned, reusable assets — eliminate training/serving skew, improve model reliability, and speed ML development."
+        intro="Manage features as versioned, reusable assets - eliminate training/serving skew, improve model reliability, and speed ML development."
       />
 
       <section

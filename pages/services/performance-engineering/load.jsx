@@ -19,7 +19,7 @@ export default function LoadAndChaosTesting() {
   return (
     <>
       <Head>
-        <title>Load & Chaos Testing — Skyfobs</title>
+        <title>Load & Chaos Testing - Skyfobs</title>
         <meta
           name="description"
           content="Validate system resilience under heavy load and unexpected failures. Load testing ensures performance at scale, while chaos testing hardens systems against real-world disruptions."

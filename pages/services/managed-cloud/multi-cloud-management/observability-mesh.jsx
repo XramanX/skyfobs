@@ -63,16 +63,16 @@ export default function ObservabilityMesh() {
   return (
     <>
       <Head>
-        <title>Observability Mesh — Skyfobs</title>
+        <title>Observability Mesh - Skyfobs</title>
         <meta
           name="description"
-          content="Observability mesh: unified metrics, logs and traces across multi-cloud environments — correlation, intelligent alerting and AIOps for fast root cause and performance optimization."
+          content="Observability mesh: unified metrics, logs and traces across multi-cloud environments - correlation, intelligent alerting and AIOps for fast root cause and performance optimization."
         />
       </Head>
 
       <HeroSection
         title="Observability Mesh"
-        intro="Unified telemetry across clouds — correlate metrics, logs and traces for fast root-cause analysis, performance optimization and resilient operations."
+        intro="Unified telemetry across clouds - correlate metrics, logs and traces for fast root-cause analysis, performance optimization and resilient operations."
       />
 
       <div
@@ -160,7 +160,7 @@ export default function ObservabilityMesh() {
           {
             heading: "Observability as Code",
             paragraphs: [
-              "Define dashboards, alerts and recording rules in code for review, versioning and reproducibility. Treat observability config like application code—test it in staging and promote via CI/CD.",
+              "Define dashboards, alerts and recording rules in code for review, versioning and reproducibility. Treat observability config like application code-test it in staging and promote via CI/CD.",
             ],
           },
 

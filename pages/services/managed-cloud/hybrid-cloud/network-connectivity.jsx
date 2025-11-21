@@ -34,7 +34,7 @@ export default function NetworkConnectivity() {
     {
       icon: <FaBolt />,
       title: "Response Time",
-      text: "< 15m — fast escalation & routing for critical network events",
+      text: "< 15m - fast escalation & routing for critical network events",
     },
     {
       icon: <FaNetworkWired />,
@@ -51,7 +51,7 @@ export default function NetworkConnectivity() {
   return (
     <>
       <Head>
-        <title>Network & Connectivity — Skyfobs</title>
+        <title>Network & Connectivity - Skyfobs</title>
         <meta
           name="description"
           content="Hybrid cloud networking: secure tunnels, SD-WAN, direct cloud links, edge connectivity, intelligent traffic management and observability for low-latency, high-availability networks."
@@ -60,7 +60,7 @@ export default function NetworkConnectivity() {
 
       <HeroSection
         title="Network & Connectivity"
-        intro="Hybrid cloud networking across public cloud, private cloud and edge — secure connectivity, optimized routing, high availability and deep observability."
+        intro="Hybrid cloud networking across public cloud, private cloud and edge - secure connectivity, optimized routing, high availability and deep observability."
       />
 
       <div className="container progress-container">

@@ -3,34 +3,41 @@ import React, { useMemo } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaGlobe,
-  FaRocket,
-  FaHandsHelping,
-  FaClock,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaGlobe, FaRocket, FaHandsHelping, FaEnvelope } from "react-icons/fa";
 import styles from "../styles/components/about.module.scss";
 import Timeline from "@/components/sections/Timeline";
+import Button from "@/components/ui/Button";
 
 const TEAM = [
   {
-    name: "Alice Johnson",
-    title: "Head of Engineering",
-    img: "/team/alice.jpg",
-    bio: "Builds resilient systems and leads the platform team.",
+    name: "Amrita Patel",
+    title: "Founder & Investor",
+    bio: "Responsible for setting the mission, strategy, and overall direction, often leading key decisions and innovations.",
   },
   {
-    name: "Rahul Singh",
-    title: "Cloud Architect",
-    img: "/team/rahul.jpg",
-    bio: "Designs secure, cost-effective cloud platforms for scale.",
+    name: "Ravi Ranjan Kumar",
+    title: "CTO",
+    bio: "Oversees the technical direction of the company, ensuring that software engineering and IT services are aligned with business goals.",
   },
   {
-    name: "Maria Lopez",
-    title: "Product & Design",
-    img: "/team/maria.jpg",
-    bio: "Shapes product strategy and user experience.",
+    name: "Vyashakah Radha Krishan",
+    title: "Sales Director, Software & IT Solutions",
+    bio: "Manages the sales team focused on selling software engineering services and managed services.",
+  },
+  {
+    name: "Shanu Kumar",
+    title: "Principal Backend Engineer",
+    bio: "Provides technical leadership on backend architecture, database design, API development, AI & Gen AI and system integration.",
+  },
+  {
+    name: "Parvathy Prasad",
+    title: "HR Manager",
+    bio: "Manages human resources functions including recruitment, employee relations, training and development, and compliance.",
+  },
+  {
+    name: "Harshil Soni",
+    title: "UI/UX Framework Architect",
+    bio: "Leads creation and evolution of a reusable design system and UI framework that serves as the foundation for all user interfaces.",
   },
 ];
 
@@ -58,21 +65,38 @@ function ValueCard({ icon: Icon, title, children }) {
 }
 
 function TeamMember({ person }) {
+  const initials = person.name
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
   return (
-    <article className={styles.member} tabIndex={0}>
+    <article
+      className={styles.member}
+      tabIndex={0}
+      aria-label={`${person.name}, ${person.title}`}
+    >
       {/* <div className={styles.avatarWrap}>
-        <Image
-          src={person.img}
-          alt={`Photo of ${person.name}`}
-          width={110}
-          height={110}
-          className={styles.avatar}
-          priority={false}
-        />
+        {person.img ? (
+          <Image
+            src={person.img}
+            alt={`Photo of ${person.name}`}
+            width={110}
+            height={110}
+            className={styles.avatar}
+            priority={false}
+          />
+        ) : (
+          <div className={styles.avatarFallback} aria-hidden>
+            {initials}
+          </div>
+        )}
       </div> */}
 
       <div className={styles.meta}>
-        <h3>{person.name}</h3>
+        <h3 className={styles.memberName}>{person.name}</h3>
         <p className={styles.role}>{person.title}</p>
         <p className={styles.bio}>{person.bio}</p>
       </div>
@@ -86,7 +110,7 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About — Skyfobs</title>
+        <title>About - Skyfobs</title>
         <meta
           name="description"
           content="Skyfobs: software engineering and managed cloud solutions. Mission, values and team."
@@ -104,25 +128,27 @@ export default function AboutPage() {
                 </h1>
                 <p className={styles.lead}>
                   We help companies move faster and operate reliably in the
-                  cloud — through pragmatic engineering, secure infrastructure
+                  cloud - through pragmatic engineering, secure infrastructure
                   and product-focused delivery.
                 </p>
 
                 <div className={styles.heroCtas}>
-                  <Link href="/contact" className="button primary">
-                    Work with us
+                  <Link href="/contact">
+                    <Button>Work with us</Button>
                   </Link>
-                  <Link href="/services/managed-cloud" className="button ghost">
-                    Our services
+
+                  <Link href="/services/managed-cloud">
+                    <Button variant="ghost">Our services</Button>
                   </Link>
                 </div>
-
                 <div className={styles.heroMeta}>
                   <div className={styles.heroMetaItem}>
                     <FaEnvelope aria-hidden />
                     <div>
                       <small>Contact</small>
-                      <div className={styles.metaValue}>hello@skyfobs.com</div>
+                      <div className={styles.metaValue}>
+                        contact@skyfobs.com
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -152,7 +178,7 @@ export default function AboutPage() {
                 <h2 id="mission-title">Our mission</h2>
                 <p>
                   To enable businesses to deliver secure, scalable software and
-                  cloud platforms that unlock measurable value — faster
+                  cloud platforms that unlock measurable value - faster
                   releases, lower operating cost, and resilient services that
                   customers trust.
                 </p>
@@ -184,8 +210,8 @@ export default function AboutPage() {
         <section className={styles.stats} aria-label="Company stats">
           <div className="container">
             <div className={styles.statsList}>
-              <Stat value="20+" label="years combined experience" />
-              <Stat value="100+" label="platforms & apps shipped" />
+              <Stat value="4+" label="years combined experience" />
+              <Stat value="30+" label="platforms & apps shipped" />
               <Stat value="24/7" label="managed ops & support" />
               <Stat value="99.99%" label="avg platform uptime" />
             </div>
@@ -224,11 +250,12 @@ export default function AboutPage() {
               </div>
 
               <div className={styles.ctaActions}>
-                <Link href="/contact" className="button primary">
-                  Get in touch
+                <Link href="/contact">
+                  <Button>Get in touch</Button>
                 </Link>
-                <Link href="/services/managed-cloud" className="button ghost">
-                  See Managed Cloud
+
+                <Link href="/services/managed-cloud">
+                  <Button variant="ghost">See Managed Cloud</Button>
                 </Link>
               </div>
             </div>

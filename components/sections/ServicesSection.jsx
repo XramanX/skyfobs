@@ -6,31 +6,31 @@ import styles from "../../styles/components/servicesSection.module.scss";
 
 const ALL_SERVICES = [
   {
-    id: "software",
-    title: "Cloud-native Engineering",
-    text: "Design and build resilient cloud-native applications using containerization, microservices and API-first design.",
-    href: "/services/cloud-native-engineering",
-    tags: ["solutions"],
-  },
-  {
     id: "platform",
     title: "Managed Cloud Platforms",
     text: "Managed AWS / Azure / GCP platforms with 24/7 ops, cost optimisation and platform reliability engineering.",
-    href: "/services/managed-cloud-platforms",
+    href: "/services/managed-cloud",
     tags: ["managed"],
   },
   {
     id: "infra",
-    title: "Cloud Infrastructure & DevOps",
+    title: "Cloud Infrastructure",
     text: "IaC, CI/CD, and platform automation to accelerate delivery and improve developer experience at scale.",
-    href: "/services/cloud-infrastructure-devops",
+    href: "/services/security",
+    tags: ["solutions"],
+  },
+  {
+    id: "infra-cloud",
+    title: "DevOps & Performance Engineering",
+    text: "DevOps transformation, SRE practices and performance engineering to improve reliability and speed of delivery.",
+    href: "/services/devops",
     tags: ["solutions"],
   },
   {
     id: "security",
-    title: "Cloud Security & Compliance",
-    text: "End-to-end cloud security (identity, workload protection, infra hardening) and compliance for regulated environments.",
-    href: "/services/cloud-security",
+    title: "Security",
+    text: "Cloud security assessments, architecture reviews and managed detection & response to protect your cloud assets.",
+    href: "/services/security",
     tags: ["security"],
   },
   {
@@ -46,13 +46,6 @@ const ALL_SERVICES = [
     text: "Full-stack observability, runbooks and chaos testing to ensure reliability under load.",
     href: "/services/performance-engineering",
     tags: ["managed"],
-  },
-  {
-    id: "migration",
-    title: "Cloud Migration & Modernization",
-    text: "Lift-and-shift or refactor — we migrate applications safely and reduce operational friction.",
-    href: "/services/managed-cloud",
-    tags: ["solutions"],
   },
 ];
 
@@ -85,7 +78,7 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
           <p className={styles.lead}>
             We design, run and protect cloud platforms for businesses that need
             reliability, security and rapid innovation. From migration and
-            DevOps to AI deployment and managed operations — we help teams run
+            DevOps to AI deployment and managed operations - we help teams run
             production at scale.
           </p>
 
@@ -120,12 +113,7 @@ export default function ServicesSection({ services = ALL_SERVICES }) {
               data-delay={200 + i * 60}
               tabIndex={-1}
             >
-              <ServiceCard
-                title={s.title}
-                text={s.text}
-                href={s.href}
-                learnMoreBtn={false}
-              />
+              <ServiceCard title={s.title} text={s.text} href={s.href} />
             </div>
           ))}
         </div>

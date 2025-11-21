@@ -17,15 +17,15 @@ export default function ProfilingObservability() {
   return (
     <>
       <Head>
-        <title>Profiling & Observability — Skyfobs</title>
+        <title>Profiling & Observability - Skyfobs</title>
         <meta
           name="description"
-          content="Deep insights into system behavior — identify bottlenecks, optimise resources, and improve user experience with profiling and observability."
+          content="Deep insights into system behavior - identify bottlenecks, optimise resources, and improve user experience with profiling and observability."
         />
       </Head>
       <HeroSection
         title="Profiling & Observability"
-        intro="Deep insights into system behavior — identify bottlenecks, optimise resources, and improve user experience with profiling and observability."
+        intro="Deep insights into system behavior - identify bottlenecks, optimise resources, and improve user experience with profiling and observability."
       />
 
       <IconFeatureGrid
@@ -33,32 +33,32 @@ export default function ProfilingObservability() {
           {
             icon: <FaTachometerAlt />,
             title: "Response Time",
-            text: "243 ms (median) — track p50 / p95 / p99 to understand real user impact",
+            text: "243 ms (median) - track p50 / p95 / p99 to understand real user impact",
           },
           {
             icon: <FaChartLine />,
             title: "Throughput",
-            text: "5.2K requests / s — useful for capacity and scaling decisions",
+            text: "5.2K requests / s - useful for capacity and scaling decisions",
           },
           {
             icon: <FaMemory />,
             title: "Memory Usage",
-            text: "68% — monitor heap and allocation patterns to avoid OOMs",
+            text: "68% - monitor heap and allocation patterns to avoid OOMs",
           },
           {
             icon: <FaMicrochip />,
             title: "CPU Load",
-            text: "42% — profile hot paths and reduce expensive work",
+            text: "42% - profile hot paths and reduce expensive work",
           },
           {
             icon: <FaNetworkWired />,
             title: "API Gateway",
-            text: "12 ms (edge), 89 ms (auth) — inspect per-hop latency",
+            text: "12 ms (edge), 89 ms (auth) - inspect per-hop latency",
           },
           {
             icon: <FaServer />,
             title: "Database Query",
-            text: "142 ms (example slow query) — optimize indexes and queries",
+            text: "142 ms (example slow query) - optimize indexes and queries",
           },
         ]}
       />
@@ -96,14 +96,14 @@ export default function ProfilingObservability() {
           {
             heading: "I/O Profiling",
             paragraphs: [
-              "I/O operations — disk, network, and database — commonly create bottlenecks. I/O profiling surfaces slow calls and high-latency dependencies so you can introduce caching, batching, or parallelism where it matters most.",
+              "I/O operations - disk, network, and database - commonly create bottlenecks. I/O profiling surfaces slow calls and high-latency dependencies so you can introduce caching, batching, or parallelism where it matters most.",
             ],
           },
 
           {
             heading: "Observability Pillars",
             paragraphs: [
-              "Observability is built on metrics, tracing, and logs — together they provide a complete picture of system health and behavior.",
+              "Observability is built on metrics, tracing, and logs - together they provide a complete picture of system health and behavior.",
             ],
           },
 

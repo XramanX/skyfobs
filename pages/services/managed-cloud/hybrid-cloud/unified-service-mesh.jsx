@@ -53,7 +53,7 @@ export default function ServiceMesh() {
   return (
     <>
       <Head>
-        <title>Unified Service Mesh — Skyfobs</title>
+        <title>Unified Service Mesh - Skyfobs</title>
         <meta
           name="description"
           content="Unified service mesh for secure, observable, and resilient service-to-service communication across clusters, clouds and on-prem."
@@ -62,7 +62,7 @@ export default function ServiceMesh() {
 
       <HeroSection
         title="Unified Service Mesh"
-        intro="Automatic encryption, fine-grained traffic control, and built-in observability for hybrid microservices — without changing application code."
+        intro="Automatic encryption, fine-grained traffic control, and built-in observability for hybrid microservices - without changing application code."
       />
 
       <div className="container progress-container">
@@ -119,7 +119,7 @@ export default function ServiceMesh() {
           {
             heading: "Unified Service Mesh",
             paragraphs: [
-              "Service mesh provides a transparent infrastructure layer for service-to-service communication: authentication, encryption, routing, telemetry and policy enforcement — all without modifying application code.",
+              "Service mesh provides a transparent infrastructure layer for service-to-service communication: authentication, encryption, routing, telemetry and policy enforcement - all without modifying application code.",
             ],
           },
           {
@@ -179,7 +179,7 @@ export default function ServiceMesh() {
           {
             heading: "Access Logging & Audit Trails",
             paragraphs: [
-              "Service meshes produce detailed access logs that capture source/destination, methods, paths, status codes and metadata — essential for security audits, forensics and compliance evidence.",
+              "Service meshes produce detailed access logs that capture source/destination, methods, paths, status codes and metadata - essential for security audits, forensics and compliance evidence.",
             ],
           },
           {

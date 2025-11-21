@@ -29,7 +29,7 @@ export default function GenAIIntegration() {
   return (
     <>
       <Head>
-        <title>GenAI Integration — Skyfobs</title>
+        <title>GenAI Integration - Skyfobs</title>
         <meta
           name="description"
           content="Integrate generative AI and multimodal models into apps: model selection, RAG, prompt engineering, safety, and productionization."

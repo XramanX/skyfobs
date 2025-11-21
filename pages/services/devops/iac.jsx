@@ -50,7 +50,7 @@ export default function IaCAndAutomation() {
   return (
     <>
       <Head>
-        <title>Infrastructure as Code & Automation — Skyfobs</title>
+        <title>Infrastructure as Code & Automation - Skyfobs</title>
         <meta
           name="description"
           content="Declarative, testable and automated infrastructure: IaC, GitOps, configuration management and observability to run reliable cloud-native systems."
@@ -59,7 +59,7 @@ export default function IaCAndAutomation() {
 
       <HeroSection
         title="Infrastructure as Code & Automation"
-        intro="Treat infrastructure as software — declare, version, test and automate cloud resources and configurations to achieve repeatable, auditable operations."
+        intro="Treat infrastructure as software - declare, version, test and automate cloud resources and configurations to achieve repeatable, auditable operations."
       />
 
       <section
@@ -96,7 +96,7 @@ export default function IaCAndAutomation() {
           {
             heading: "Idempotency, Drift Detection and State Management",
             paragraphs: [
-              "IaC tools are idempotent—reapplying the same configuration converges to the same state. Remote state backends (S3, Azure Storage, Terraform Cloud) and state locking prevent concurrent state corruption. Drift detection identifies manual changes and automated remediation restores the desired state.",
+              "IaC tools are idempotent-reapplying the same configuration converges to the same state. Remote state backends (S3, Azure Storage, Terraform Cloud) and state locking prevent concurrent state corruption. Drift detection identifies manual changes and automated remediation restores the desired state.",
             ],
           },
 

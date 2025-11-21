@@ -10,10 +10,10 @@ export default function PlatformHardening() {
   return (
     <>
       <Head>
-        <title>Platform Hardening — Skyfobs</title>
+        <title>Platform Hardening - Skyfobs</title>
         <meta
           name="description"
-          content="Reduce attack surface and strengthen systems — OS, network, app and cloud hardening to create resilient, defensible platforms."
+          content="Reduce attack surface and strengthen systems - OS, network, app and cloud hardening to create resilient, defensible platforms."
         />
       </Head>
 
@@ -60,7 +60,7 @@ export default function PlatformHardening() {
             heading: "Operating System Hardening",
             paragraphs: [
               "Minimal installations remove non-essential packages and services to shrink the attack surface. Apply security baselines (CIS, DISA STIGs, vendor guides) and automate configuration with tools like Ansible or Salt to ensure consistency.",
-              "Patch management must be automated and orchestrated—test in staging, schedule rollouts, and prioritize critical fixes to close known vulnerabilities quickly.",
+              "Patch management must be automated and orchestrated-test in staging, schedule rollouts, and prioritize critical fixes to close known vulnerabilities quickly.",
             ],
           },
 
@@ -113,7 +113,7 @@ export default function PlatformHardening() {
             heading: "Container & Immutable Infrastructure Hardening",
             paragraphs: [
               "Use minimal base images, run containers as non-root, and enforce read-only filesystems and resource limits. Scan images before push and enforce registry policies for approved images.",
-              "Immutable infra (golden images / image pipelines) prevents configuration drift—redeploy rather than mutate hosts so every instance matches hardened baselines.",
+              "Immutable infra (golden images / image pipelines) prevents configuration drift-redeploy rather than mutate hosts so every instance matches hardened baselines.",
             ],
           },
 
@@ -134,7 +134,7 @@ export default function PlatformHardening() {
           {
             heading: "Defense in Depth",
             paragraphs: [
-              "Apply multiple independent controls — segmentation, host hardening, application controls, encryption and monitoring — so the failure of one control does not result in a full compromise. Regular assessments validate that layers remain effective and highlight gaps.",
+              "Apply multiple independent controls - segmentation, host hardening, application controls, encryption and monitoring - so the failure of one control does not result in a full compromise. Regular assessments validate that layers remain effective and highlight gaps.",
             ],
           },
         ]}
